@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="15dp">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/iv_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/cardImageHeight"
+                    android:layout_marginLeft="@dimen/cardSideMargin"
+                    android:layout_marginRight="@dimen/cardSideMargin"
+                    android:layout_marginTop="@dimen/spacingBetweenCards"
+                    android:scaleType="fitXY" />
+
+                <ImageView
+                    android:id="@+id/iv_save"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_alignTop="@+id/iv_card"
+                    android:layout_alignRight="@+id/iv_card"
+                    android:layout_alignEnd="@+id/iv_card" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_title_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/title_text"
+                android:textColor="@color/textColor"
+                android:textStyle="bold"
+                android:layout_marginLeft="@dimen/cardSideMargin"
+                android:layout_marginRight="@dimen/cardSideMargin"
+                android:layout_marginTop="@dimen/cardTopMargin"
+                android:layout_marginBottom="2dp"/>
+
+            <TextView
+                android:id="@+id/tv_info_text"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:minHeight="200dp"
+                android:textSize="@dimen/info_text"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:textColor="@color/textColor"
+                android:layout_marginLeft="@dimen/cardSideMargin"
+                android:layout_marginRight="@dimen/cardSideMargin"
+                android:layout_marginBottom="@dimen/spacingBetweenCards"/>
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>
