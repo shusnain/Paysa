@@ -1,7 +1,9 @@
 package com.example.android.paysa.presentation.ui.adapters;
 
 import android.content.Context;
+import android.nfc.Tag;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,22 +11,23 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.android.paysa.R;
+import com.example.android.paysa.domain.models.Card;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * Created by S_Husnain on 2017-09-27.
  */
 
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardAdapterViewHolder> {
-    private List<String> mCardTextData;
-    private List<String> mCardTitleData;
+    private List<Card> mCardData;
 
     public CardAdapter(){
-        mCardTextData = new ArrayList<String>();
-        mCardTitleData = new ArrayList<String>();
+        mCardData = new ArrayList<Card>();
     }
 
     @Override
@@ -41,8 +44,10 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardAdapterVie
 
     @Override
     public void onBindViewHolder(CardAdapter.CardAdapterViewHolder holder, int position) {
-        String cardText = mCardTextData.get(position);
-        String cardTitle = mCardTitleData.get(position);
+
+        String cardTitle = mCardData.get(position).getTitle();
+        String cardText = mCardData.get(position).getInfo();
+
         holder.mCardTextView.setText(cardText);
         holder.mCardTitleView.setText(cardTitle);
         holder.mCardImageView.setImageResource(R.drawable.better_call_saul);
@@ -50,7 +55,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardAdapterVie
     }
 
     @Override
-    public int getItemCount() {return mCardTextData == null ? 0 : mCardTextData.size();}
+    public int getItemCount() {return mCardData == null ? 0 : mCardData.size();}
 
     class CardAdapterViewHolder extends RecyclerView.ViewHolder{
         public final TextView mCardTextView;
@@ -67,14 +72,8 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardAdapterVie
         }
     }
 
-    public void setCardData(Map<String, String> cardData){
-        for(Map.Entry<String, String> entry : cardData.entrySet()){
-            String title = entry.getKey();
-            mCardTitleData.add(title);
-
-            String text = entry.getValue();
-            mCardTextData.add(text);
-        }
+    public void setCardData(List<Card> cardData){
+        mCardData = cardData;
 
         notifyDataSetChanged();
     }

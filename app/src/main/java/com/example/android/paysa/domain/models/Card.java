@@ -8,9 +8,9 @@ public class Card {
 
     private String mTitle;
     private String mInfo;
-    private float mWage;
+    private double mWage;
 
-    public Card(String title, String info, float wage) {
+    public Card(String title, String info, double wage) {
 
         mTitle = title;
         mInfo = info;
@@ -21,7 +21,7 @@ public class Card {
 
     public void setInfo(String info){ mInfo = info; }
 
-    public void setWage(float wage){ mWage = wage; }
+    public void setWage(double wage){ mWage = wage; }
 
     public String getTitle() {
         return mTitle;
@@ -29,5 +29,5 @@ public class Card {
 
     public String getInfo(){ return mInfo; }
 
-    public float getWage(){ return mWage; }
+    public double getWage(){ return mWage; }
 }
