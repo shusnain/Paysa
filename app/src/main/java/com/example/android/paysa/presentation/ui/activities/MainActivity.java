@@ -1,5 +1,6 @@
 package com.example.android.paysa.presentation.ui.activities;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -20,7 +21,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity implements View{
+public class MainActivity extends AppCompatActivity implements
+        View,
+        CardAdapter.CardAdapterOnClickHandler{
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
@@ -53,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements View{
 
         mRecyclerView.setHasFixedSize(true);
 
-        mCardAdapter = new CardAdapter();
+        mCardAdapter = new CardAdapter(this);
 
         mMainPresenter = new MainPresenterImpl(
                 ThreadExecutor.getInstance(),
@@ -88,5 +91,15 @@ public class MainActivity extends AppCompatActivity implements View{
     @Override
     public void setCards(List<Card> cards) {
         mCardAdapter.setCardData(cards);
+    }
+
+    @Override
+    public void onClick(int viewID, Card card) {
+        if(viewID == R.id.iv_save){
+            card.toggleSaved();
+        } else if (viewID == R.id.iv_card){
+            card.setTitle("Change");
+        }
+        mCardAdapter.notifyDataSetChanged();
     }
 }

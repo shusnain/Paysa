@@ -9,12 +9,23 @@ public class Card {
     private String mTitle;
     private String mInfo;
     private double mWage;
+    private boolean mSaved;
 
     public Card(String title, String info, double wage) {
 
         mTitle = title;
         mInfo = info;
         mWage = wage;
+        mSaved = false;
+
+    }
+
+    public Card(String title, String info, double wage, boolean saved) {
+
+        mTitle = title;
+        mInfo = info;
+        mWage = wage;
+        mSaved = saved;
     }
 
     public void setTitle(String title){ mTitle = title; }
@@ -23,6 +34,8 @@ public class Card {
 
     public void setWage(double wage){ mWage = wage; }
 
+    public void setSaved(boolean saved){ mSaved = saved;}
+
     public String getTitle() {
         return mTitle;
     }
@@ -30,4 +43,8 @@ public class Card {
     public String getInfo(){ return mInfo; }
 
     public double getWage(){ return mWage; }
+
+    public boolean isSaved(){ return mSaved;}
+
+    public void toggleSaved(){ mSaved = !mSaved; }
 }

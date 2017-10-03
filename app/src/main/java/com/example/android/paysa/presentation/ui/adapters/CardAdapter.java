@@ -26,9 +26,29 @@ import static android.content.ContentValues.TAG;
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardAdapterViewHolder> {
     private List<Card> mCardData;
 
-    public CardAdapter(){
-        mCardData = new ArrayList<Card>();
+    final private CardAdapterOnClickHandler mClickHandler;
+
+    public interface CardAdapterOnClickHandler{
+
+        /**
+         *
+         * @param viewID - ID of the view
+         * @param card
+         */
+        void onClick(int viewID, Card card);
     }
+
+    /**
+     * Creates a Card Adapter
+     *
+     * @param clickHandler
+     */
+
+    public CardAdapter(CardAdapterOnClickHandler clickHandler){
+        mCardData = new ArrayList<Card>();
+        mClickHandler = clickHandler;
+    }
+
 
     @Override
     public CardAdapter.CardAdapterViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
@@ -43,21 +63,29 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardAdapterVie
     }
 
     @Override
-    public void onBindViewHolder(CardAdapter.CardAdapterViewHolder holder, int position) {
+    public void onBindViewHolder(CardAdapter.CardAdapterViewHolder holder, final int position) {
 
         String cardTitle = mCardData.get(position).getTitle();
-        String cardText = mCardData.get(position).getInfo();
-
-        holder.mCardTextView.setText(cardText);
         holder.mCardTitleView.setText(cardTitle);
+
+        String cardText = mCardData.get(position).getInfo();
+        holder.mCardTextView.setText(cardText);
+
+        boolean saved = mCardData.get(position).isSaved();
+        if(saved){
+            holder.mCardSaveImageView.setImageResource(R.drawable.star_filled);
+        } else{
+            holder.mCardSaveImageView.setImageResource(R.drawable.star);
+        }
+
         holder.mCardImageView.setImageResource(R.drawable.better_call_saul);
-        holder.mCardSaveImageView.setImageResource(R.drawable.star_filled);
     }
 
     @Override
     public int getItemCount() {return mCardData == null ? 0 : mCardData.size();}
 
-    class CardAdapterViewHolder extends RecyclerView.ViewHolder{
+
+    class CardAdapterViewHolder extends RecyclerView.ViewHolder  {
         public final TextView mCardTextView;
         public final TextView mCardTitleView;
         public final ImageView mCardImageView;
@@ -69,7 +97,35 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardAdapterVie
             mCardTitleView = (TextView) itemView.findViewById(R.id.tv_title_text);
             mCardImageView = (ImageView) itemView.findViewById(R.id.iv_card);
             mCardSaveImageView = (ImageView) itemView.findViewById(R.id.iv_save);
+
+            mCardSaveImageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int adapterPosition = getAdapterPosition();
+                    Card card = mCardData.get(adapterPosition);
+                    int id = view.getId();
+                    mClickHandler.onClick(id, card);
+                }
+            });
+
+            mCardImageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int adapterPosition = getAdapterPosition();
+                    Card card = mCardData.get(adapterPosition);
+                    int id = view.getId();
+                    mClickHandler.onClick(id, card);
+                }
+            });
+//            mCardSaveImageView.setOnClickListener(this);
         }
+
+//        @Override
+//        public void onClick(View view) {
+//            int adapterPosition = getAdapterPosition();
+//            Card card = mCardData.get(adapterPosition);
+//            mClickHandler.onClick(card);
+//        }
     }
 
     public void setCardData(List<Card> cardData){
