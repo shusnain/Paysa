@@ -3,13 +3,11 @@ package com.example.android.paysa.presentation.presenters.impl;
 import com.example.android.paysa.domain.executors.Executor;
 import com.example.android.paysa.domain.executors.MainThread;
 import com.example.android.paysa.domain.interactors.GetCardsInteractor;
-import com.example.android.paysa.domain.interactors.SampleInteractor;
 import com.example.android.paysa.domain.interactors.impl.GetCardsInteractorImpl;
-import com.example.android.paysa.domain.models.Card;
+import com.example.android.paysa.domain.models.Job;
 import com.example.android.paysa.presentation.presenters.MainPresenter;
 import com.example.android.paysa.presentation.presenters.base.AbstractPresenter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -60,7 +58,7 @@ public class MainPresenterImpl extends AbstractPresenter implements MainPresente
     }
 
     @Override
-    public void onCardsRetrieved(List<Card> cardsList) {
+    public void onCardsRetrieved(List<Job> cardsList) {
         mView.setCards(cardsList);
     }
 }

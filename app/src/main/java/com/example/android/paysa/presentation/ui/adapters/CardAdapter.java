@@ -1,9 +1,7 @@
 package com.example.android.paysa.presentation.ui.adapters;
 
 import android.content.Context;
-import android.nfc.Tag;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,20 +9,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.android.paysa.R;
-import com.example.android.paysa.domain.models.Card;
+import com.example.android.paysa.domain.models.Job;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-
-import static android.content.ContentValues.TAG;
 
 /**
  * Created by S_Husnain on 2017-09-27.
  */
 
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardAdapterViewHolder> {
-    private List<Card> mCardData;
+    private List<Job> mJobData;
 
     final private CardAdapterOnClickHandler mClickHandler;
 
@@ -33,19 +28,19 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardAdapterVie
         /**
          *
          * @param viewID - ID of the view
-         * @param card
+         * @param job
          */
-        void onClick(int viewID, Card card);
+        void onClick(int viewID, Job job);
     }
 
     /**
-     * Creates a Card Adapter
+     * Creates a Job Adapter
      *
      * @param clickHandler
      */
 
     public CardAdapter(CardAdapterOnClickHandler clickHandler){
-        mCardData = new ArrayList<Card>();
+        mJobData = new ArrayList<Job>();
         mClickHandler = clickHandler;
     }
 
@@ -65,13 +60,13 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardAdapterVie
     @Override
     public void onBindViewHolder(CardAdapter.CardAdapterViewHolder holder, final int position) {
 
-        String cardTitle = mCardData.get(position).getTitle();
+        String cardTitle = mJobData.get(position).getTitle();
         holder.mCardTitleView.setText(cardTitle);
 
-        String cardText = mCardData.get(position).getInfo();
+        String cardText = mJobData.get(position).getInfo();
         holder.mCardTextView.setText(cardText);
 
-        boolean saved = mCardData.get(position).isSaved();
+        boolean saved = mJobData.get(position).isSaved();
         if(saved){
             holder.mCardSaveImageView.setImageResource(R.drawable.star_filled);
         } else{
@@ -82,7 +77,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardAdapterVie
     }
 
     @Override
-    public int getItemCount() {return mCardData == null ? 0 : mCardData.size();}
+    public int getItemCount() {return mJobData == null ? 0 : mJobData.size();}
 
 
     class CardAdapterViewHolder extends RecyclerView.ViewHolder  {
@@ -102,9 +97,9 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardAdapterVie
                 @Override
                 public void onClick(View view) {
                     int adapterPosition = getAdapterPosition();
-                    Card card = mCardData.get(adapterPosition);
+                    Job job = mJobData.get(adapterPosition);
                     int id = view.getId();
-                    mClickHandler.onClick(id, card);
+                    mClickHandler.onClick(id, job);
                 }
             });
 
@@ -112,24 +107,17 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardAdapterVie
                 @Override
                 public void onClick(View view) {
                     int adapterPosition = getAdapterPosition();
-                    Card card = mCardData.get(adapterPosition);
+                    Job job = mJobData.get(adapterPosition);
                     int id = view.getId();
-                    mClickHandler.onClick(id, card);
+                    mClickHandler.onClick(id, job);
                 }
             });
-//            mCardSaveImageView.setOnClickListener(this);
         }
 
-//        @Override
-//        public void onClick(View view) {
-//            int adapterPosition = getAdapterPosition();
-//            Card card = mCardData.get(adapterPosition);
-//            mClickHandler.onClick(card);
-//        }
     }
 
-    public void setCardData(List<Card> cardData){
-        mCardData = cardData;
+    public void setCardData(List<Job> jobData){
+        mJobData = jobData;
 
         notifyDataSetChanged();
     }

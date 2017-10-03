@@ -1,7 +1,7 @@
 package com.example.android.paysa.domain.interactors;
 
 import com.example.android.paysa.domain.interactors.base.Interactor;
-import com.example.android.paysa.domain.models.Card;
+import com.example.android.paysa.domain.models.Job;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ public interface GetCardsInteractor extends Interactor {
 
     interface Callback {
         // TODO: Add interactor callback methods here
-        void onCardsRetrieved(List<Card> cardsList);
+        void onCardsRetrieved(List<Job> cardsList);
     }
 
     // TODO: Add interactor methods here

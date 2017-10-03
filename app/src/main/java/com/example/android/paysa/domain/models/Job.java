@@ -4,14 +4,14 @@ package com.example.android.paysa.domain.models;
  * Created by S_Husnain on 2017-09-30.
  */
 
-public class Card {
+public class Job {
 
     private String mTitle;
     private String mInfo;
     private double mWage;
     private boolean mSaved;
 
-    public Card(String title, String info, double wage) {
+    public Job(String title, String info, double wage) {
 
         mTitle = title;
         mInfo = info;
@@ -20,7 +20,7 @@ public class Card {
 
     }
 
-    public Card(String title, String info, double wage, boolean saved) {
+    public Job(String title, String info, double wage, boolean saved) {
 
         mTitle = title;
         mInfo = info;

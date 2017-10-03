@@ -1,14 +1,12 @@
 package com.example.android.paysa.presentation.ui.activities;
 
-import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 
 import com.example.android.paysa.domain.executors.impl.ThreadExecutor;
-import com.example.android.paysa.domain.models.Card;
+import com.example.android.paysa.domain.models.Job;
 import com.example.android.paysa.presentation.presenters.MainPresenter;
 import com.example.android.paysa.presentation.presenters.MainPresenter.View;
 import com.example.android.paysa.presentation.presenters.impl.MainPresenterImpl;
@@ -16,7 +14,6 @@ import com.example.android.paysa.presentation.ui.adapters.CardAdapter;
 import com.example.android.paysa.R;
 import com.example.android.paysa.threading.MainThreadImpl;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -89,16 +86,16 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void setCards(List<Card> cards) {
-        mCardAdapter.setCardData(cards);
+    public void setCards(List<Job> jobs) {
+        mCardAdapter.setCardData(jobs);
     }
 
     @Override
-    public void onClick(int viewID, Card card) {
+    public void onClick(int viewID, Job job) {
         if(viewID == R.id.iv_save){
-            card.toggleSaved();
+            job.toggleSaved();
         } else if (viewID == R.id.iv_card){
-            card.setTitle("Change");
+            job.setTitle("Change");
         }
         mCardAdapter.notifyDataSetChanged();
     }
