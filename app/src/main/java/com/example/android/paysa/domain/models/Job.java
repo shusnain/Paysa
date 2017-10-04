@@ -2,6 +2,8 @@ package com.example.android.paysa.domain.models;
 
 import android.support.annotation.NonNull;
 
+import java.util.Comparator;
+
 /**
  * Created by S_Husnain on 2017-09-30.
  */
@@ -56,6 +58,8 @@ public class Job implements Comparable<Job>{
     @Override
     public int compareTo(@NonNull Job job) {
         long compareId = job.getId();
-        return mId < compareId ? 1 : -1;
+        return mId < compareId ? -1 :
+                mId > compareId ? 1 :
+                0;
     }
 }
