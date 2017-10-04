@@ -2,6 +2,7 @@ package com.example.android.paysa.domain.models;
 
 import com.example.android.paysa.domain.utilities.JobUtils;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -15,23 +16,46 @@ public class Employer {
 
     private String mLocation;
 
+    private String mPhoneNumber;
+
+    private String mEmailAddress;
+
+    private String mPublicEmailAddress;
+
     private List<Job> mOpenJobs;
 
     private List<Job> mAllJobs;
 
-    public Employer(String name) {
+    public Employer(String name, String location, String phoneNumber, String emailAddress) {
+
         mName = name;
+        mLocation = location;
+        mPhoneNumber = phoneNumber;
+        mEmailAddress = emailAddress;
+        mPublicEmailAddress = emailAddress;
+        mOpenJobs = new ArrayList<Job>();
+        mAllJobs = new ArrayList<Job>();
     }
 
-    public String getName() {
-        return mName;
-    }
+    public String getName(){ return mName; }
 
-    public String getLocation() { return mLocation; }
+    public String getLocation(){ return mLocation; }
 
-    public List<Job> getOpenJobs() { return mOpenJobs; }
+    public String getPhoneNumer(){ return mPhoneNumber; }
 
-    public List<Job> getAllJobs() { return mAllJobs; }
+    public String getEmailAddress(){ return mEmailAddress; }
+
+    public String getPublicEmailAddress(){ return mPublicEmailAddress; }
+
+    public void setPhoneNumber(String phoneNumber){ mPhoneNumber = phoneNumber; }
+
+    public void setEmailAddress(String emailAddress){ mEmailAddress = emailAddress; }
+
+    public void setPublicEmailAddress(String emailAddress){ mPublicEmailAddress = emailAddress; }
+
+    public List<Job> getOpenJobs(){ return mOpenJobs; }
+
+    public List<Job> getAllJobs(){ return mAllJobs; }
 
     public void addToOpenJobs(Job job) {
         addToAllJobs(job);

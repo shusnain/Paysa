@@ -80,11 +80,17 @@ public class Seeker {
 
     public String getPhoneNumber(){ return mPhoneNumber; }
 
+    public String getEmailAddress() { return mEmailAddress; }
+
     public List<String> getSkills() { return mSkills; }
 
     public List<Job> getJobsAppliedTo() { return mJobsAppliedTo; }
 
     public List<Job> getJobsSaved() { return mJobsSaved; }
+
+    public void setPhoneNumber(String phoneNumber) { mPhoneNumber = phoneNumber; }
+
+    public void setEmailAddress(String emailAddress){ mEmailAddress = emailAddress; }
 
     public void addToJobsSaved(Job job){
         int positionJobsSaved = JobUtils.findJob(mJobsSaved, job.getId());
