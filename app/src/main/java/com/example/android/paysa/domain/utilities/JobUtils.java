@@ -2,6 +2,7 @@ package com.example.android.paysa.domain.utilities;
 
 import com.example.android.paysa.domain.models.Job;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -27,5 +28,10 @@ public final class JobUtils {
             }
         }
         return -1;
+    }
+
+    public static void addToJobsList(List<Job> jobList, Job job){
+        jobList.add(job);
+        Collections.sort(jobList);
     }
 }

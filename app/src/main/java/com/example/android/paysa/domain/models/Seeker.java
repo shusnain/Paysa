@@ -26,43 +26,35 @@ public class Seeker {
 
     private String mPhoneNumber;
 
+    private String mEmailAddress;
+
     private List<String> mSkills;
 
     private List<Job> mJobsAppliedTo;
 
     private List<Job> mJobsSaved;
 
-    public Seeker(String seekerId, String firstName, String middleName, String lastName, String location, String phoneNumber) {
+    public Seeker(String seekerId, String firstName, String middleName, String lastName, String location, String phoneNumber, String emailAddress) {
         mSeekerId = seekerId;
         mFirstName = firstName;
         mMiddleName = middleName;
         mLastName = lastName;
         mLocation = location;
         mPhoneNumber = phoneNumber;
+        mEmailAddress = emailAddress;
         mSkills = new ArrayList<String>();
         mJobsAppliedTo = new ArrayList<Job>();
         mJobsSaved = new ArrayList<Job>();
     }
 
-    public Seeker(String seekerId, String firstName, String middleName, String lastName, String location, String phoneNumber, List<String> skills, List<Job> jobsAppliedTo, List<Job> jobsSaved) {
+    public Seeker(String seekerId, String firstName, String middleName, String lastName, String location, String phoneNumber, String emailAddress, List<String> skills, List<Job> jobsAppliedTo, List<Job> jobsSaved) {
         mSeekerId = seekerId;
         mFirstName = firstName;
         mMiddleName = middleName;
         mLastName = lastName;
         mLocation = location;
         mPhoneNumber = phoneNumber;
-        mSkills = skills;
-        mJobsAppliedTo = jobsAppliedTo;
-        mJobsSaved = jobsSaved;
-    }
-
-    public Seeker(String seekerId, String firstName, String lastName, String location, String phoneNumber, List<String> skills, List<Job> jobsAppliedTo, List<Job> jobsSaved) {
-        mSeekerId = seekerId;
-        mFirstName = firstName;
-        mMiddleName = "";
-        mLastName = lastName;
-        mLocation = location;
-        mPhoneNumber = phoneNumber;
+        mEmailAddress = emailAddress;
         mSkills = skills;
         mJobsAppliedTo = jobsAppliedTo;
         mJobsSaved = jobsSaved;
@@ -95,13 +87,19 @@ public class Seeker {
     public List<Job> getJobsSaved() { return mJobsSaved; }
 
     public void addToJobsSaved(Job job){
-        mJobsSaved.add(job);
-        Collections.sort(mJobsSaved);
+        int positionJobsSaved = JobUtils.findJob(mJobsSaved, job.getId());
+        if(positionJobsSaved == -1){
+            JobUtils.addToJobsList(mJobsSaved, job);
+        }
     }
 
     public void addToJobsApplied(Job job) {
-        mJobsAppliedTo.add(job);
-        Collections.sort(mJobsAppliedTo);
+        addToJobsSaved(job);
+
+        int positionJobsApplied = JobUtils.findJob(mJobsAppliedTo, job.getId());
+        if(positionJobsApplied == -1){
+            JobUtils.addToJobsList(mJobsAppliedTo, job);
+        }
     }
 
     public void removeFromJobsSaved(Job job){
