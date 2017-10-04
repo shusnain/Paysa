@@ -9,7 +9,7 @@ import java.util.List;
  * Created by S_Husnain on 2017-09-30.
  */
 
-public interface GetCardsInteractor extends Interactor {
+public interface GetJobsInteractor extends Interactor {
 
     interface Callback {
         // TODO: Add interactor callback methods here

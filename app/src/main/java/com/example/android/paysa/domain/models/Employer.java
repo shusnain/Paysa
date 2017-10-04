@@ -12,6 +12,8 @@ import java.util.List;
 
 public class Employer {
 
+    private String mId;
+
     private String mName;
 
     private String mLocation;
@@ -26,8 +28,9 @@ public class Employer {
 
     private List<Job> mAllJobs;
 
-    public Employer(String name, String location, String phoneNumber, String emailAddress) {
+    public Employer(String Id, String name, String location, String phoneNumber, String emailAddress) {
 
+        mId = Id;
         mName = name;
         mLocation = location;
         mPhoneNumber = phoneNumber;
@@ -36,6 +39,8 @@ public class Employer {
         mOpenJobs = new ArrayList<Job>();
         mAllJobs = new ArrayList<Job>();
     }
+
+    public String getId(){ return mId; }
 
     public String getName(){ return mName; }
 
