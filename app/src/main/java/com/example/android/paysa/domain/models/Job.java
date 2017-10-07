@@ -4,8 +4,10 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.List;
 
 import static android.content.ContentValues.TAG;
 
@@ -22,14 +24,11 @@ public class Job implements Comparable<Job>{
     private boolean mSaved;
     private Date mStartDate;
     private Date mEndDate;
+    private List<Seeker> mApplicants;
 
-    public Job(String title, String info, double wage, Date startDate, Date endDate) {
+    public Job(String title, String info, double wage, Date startDate, Date endDate) throws Exception{
         if(startDate.after(endDate)){
-            try{
-                throw new Exception("startDate is after endDate");
-            } catch(Exception e){
-                Log.e(TAG, e.getMessage());
-            }
+            throw new Exception("startDate is after endDate");
         }
         mId = System.currentTimeMillis();
         mTitle = title;
@@ -38,10 +37,13 @@ public class Job implements Comparable<Job>{
         mSaved = false;
         mStartDate = startDate;
         mEndDate = endDate;
-
+        mApplicants = new ArrayList<Seeker>();
     }
 
-    public Job(String title, String info, double wage, boolean saved,  Date startDate, Date endDate) {
+    public Job(String title, String info, double wage, boolean saved,  Date startDate, Date endDate) throws Exception {
+        if(startDate.after(endDate)){
+            throw new Exception("startDate is after endDate");
+        }
         mId = System.currentTimeMillis();
         mTitle = title;
         mInfo = info;
@@ -49,6 +51,14 @@ public class Job implements Comparable<Job>{
         mSaved = saved;
         mStartDate = startDate;
         mEndDate = endDate;
+    }
+
+    @Override
+    public int compareTo(@NonNull Job job) {
+        long compareId = job.getId();
+        return mId < compareId ? -1 :
+                mId > compareId ? 1 :
+                        0;
     }
 
     public void setTitle(String title){ mTitle = title; }
@@ -73,15 +83,13 @@ public class Job implements Comparable<Job>{
 
     public Date getEndDate(){ return mEndDate; }
 
+    public List<Seeker> getApplicants(){ return mApplicants; }
+
     public boolean isSaved(){ return mSaved;}
 
     public void toggleSaved(){ mSaved = !mSaved; }
 
-    @Override
-    public int compareTo(@NonNull Job job) {
-        long compareId = job.getId();
-        return mId < compareId ? -1 :
-                mId > compareId ? 1 :
-                0;
+    public void addToApplicants(Seeker seeker){
+        mApplicants.add(seeker);
     }
 }

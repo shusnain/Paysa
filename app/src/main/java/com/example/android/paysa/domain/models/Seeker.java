@@ -34,6 +34,8 @@ public class Seeker {
 
     private List<Job> mJobsSaved;
 
+    private List<Job> mJobsOffered;
+
     public Seeker(String seekerId, String firstName, String middleName, String lastName, String location, String phoneNumber, String emailAddress) {
         mSeekerId = seekerId;
         mFirstName = firstName;
@@ -45,9 +47,10 @@ public class Seeker {
         mSkills = new ArrayList<String>();
         mJobsAppliedTo = new ArrayList<Job>();
         mJobsSaved = new ArrayList<Job>();
+        mJobsOffered = new ArrayList<Job>();
     }
 
-    public Seeker(String seekerId, String firstName, String middleName, String lastName, String location, String phoneNumber, String emailAddress, List<String> skills, List<Job> jobsAppliedTo, List<Job> jobsSaved) {
+    public Seeker(String seekerId, String firstName, String middleName, String lastName, String location, String phoneNumber, String emailAddress, List<String> skills, List<Job> jobsAppliedTo, List<Job> jobsSaved, List<Job> jobsOffered) {
         mSeekerId = seekerId;
         mFirstName = firstName;
         mMiddleName = middleName;
@@ -58,6 +61,7 @@ public class Seeker {
         mSkills = skills;
         mJobsAppliedTo = jobsAppliedTo;
         mJobsSaved = jobsSaved;
+        mJobsOffered = jobsOffered;
     }
 
     public String getSeekerId() { return mSeekerId; }
@@ -88,6 +92,8 @@ public class Seeker {
 
     public List<Job> getJobsSaved() { return mJobsSaved; }
 
+    public List<Job> getJobOffered() { return mJobsOffered; }
+
     public void setPhoneNumber(String phoneNumber) { mPhoneNumber = phoneNumber; }
 
     public void setEmailAddress(String emailAddress){ mEmailAddress = emailAddress; }
@@ -108,6 +114,27 @@ public class Seeker {
         }
     }
 
+    public void addToJobsOffered(Job job){
+        addToJobsSaved(job);
+
+        int positionJobOffered = JobUtils.findJob(mJobsOffered, job.getId());
+        if(positionJobOffered == -1){
+            JobUtils.addToJobsList(mJobsOffered, job);
+        }
+    }
+
+    public void removeFromJobsAppliedTo(Job job){
+        long jobId = job.getId();
+
+        int position = JobUtils.findJob(mJobsAppliedTo, jobId);
+
+        if(position == -1){
+            return;
+        }
+
+        mJobsAppliedTo.remove(position);
+    }
+
     public void removeFromJobsSaved(Job job){
         long jobId = job.getId();
         int position = JobUtils.findJob(mJobsSaved, jobId);
@@ -117,6 +144,24 @@ public class Seeker {
         }
 
         mJobsSaved.remove(position);
+    }
+
+    public void removeFromJobsOffered(Job job){
+        long jobId = job.getId();
+
+        int position = JobUtils.findJob(mJobsOffered, jobId);
+
+        if(position == -1){
+            return;
+        }
+
+        mJobsOffered.remove(position);
+    }
+
+    public void removeFromAllJobsLists(Job job){
+        removeFromJobsAppliedTo(job);
+        removeFromJobsSaved(job);
+        removeFromJobsOffered(job);
     }
 
 }
