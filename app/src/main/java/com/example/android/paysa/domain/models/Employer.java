@@ -46,7 +46,7 @@ public class Employer {
 
     public String getLocation(){ return mLocation; }
 
-    public String getPhoneNumer(){ return mPhoneNumber; }
+    public String getPhoneNumber(){ return mPhoneNumber; }
 
     public String getEmailAddress(){ return mEmailAddress; }
 
@@ -96,5 +96,15 @@ public class Employer {
         }
 
         mAllJobs.remove(position);
+    }
+
+    public void offerJob(Seeker seeker, Job job){
+        seeker.jobOffered(job);
+    }
+
+    public void acceptedOffer(Job job, Seeker seeker){
+        job.closeJob();
+        job.setEmployee(seeker);
+        removeFromOpenJobs(job);
     }
 }

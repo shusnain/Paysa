@@ -21,9 +21,9 @@ public final class JobUtils {
             long xId = x.getId();
             if(jobId == xId){
                 return mid;
-            } else if(xId > jobId){
-                low = mid + 1;
             } else if(xId < jobId){
+                low = mid + 1;
+            } else if(xId > jobId){
                 high = mid - 1;
             }
         }

@@ -24,9 +24,12 @@ public class Job implements Comparable<Job>{
     private boolean mSaved;
     private Date mStartDate;
     private Date mEndDate;
+    private Employer mEmployer;
+    private Seeker mEmployee;
     private List<Seeker> mApplicants;
+    private boolean mCanApply;
 
-    public Job(String title, String info, double wage, Date startDate, Date endDate) throws Exception{
+    public Job(String title, String info, double wage, Date startDate, Date endDate, Employer employer) throws Exception{
         if(startDate.after(endDate)){
             throw new Exception("startDate is after endDate");
         }
@@ -37,10 +40,31 @@ public class Job implements Comparable<Job>{
         mSaved = false;
         mStartDate = startDate;
         mEndDate = endDate;
+        mEmployer = employer;
+        mEmployee = null;
         mApplicants = new ArrayList<Seeker>();
+        mCanApply = true;
     }
 
-    public Job(String title, String info, double wage, boolean saved,  Date startDate, Date endDate) throws Exception {
+    // Constructor for Tests
+    public Job(long id, String title, String info, double wage, Date startDate, Date endDate, Employer employer) throws Exception{
+        if(startDate.after(endDate)){
+            throw new Exception("startDate is after endDate");
+        }
+        mId = id;
+        mTitle = title;
+        mInfo = info;
+        mWage = wage;
+        mSaved = false;
+        mStartDate = startDate;
+        mEndDate = endDate;
+        mEmployer = employer;
+        mEmployee = null;
+        mApplicants = new ArrayList<Seeker>();
+        mCanApply = true;
+    }
+
+    public Job(String title, String info, double wage, boolean saved,  Date startDate, Date endDate, Employer employer) throws Exception {
         if(startDate.after(endDate)){
             throw new Exception("startDate is after endDate");
         }
@@ -51,6 +75,9 @@ public class Job implements Comparable<Job>{
         mSaved = saved;
         mStartDate = startDate;
         mEndDate = endDate;
+        mEmployer = employer;
+        mEmployee = null;
+        mCanApply = true;
     }
 
     @Override
@@ -83,13 +110,29 @@ public class Job implements Comparable<Job>{
 
     public Date getEndDate(){ return mEndDate; }
 
+    public Employer getEmployer() { return mEmployer; }
+
+    public Seeker getEmployee() { return mEmployee; }
+
     public List<Seeker> getApplicants(){ return mApplicants; }
+
+    public void setEmployee(Seeker seeker){
+        mEmployee = seeker;
+    }
 
     public boolean isSaved(){ return mSaved;}
 
+    public boolean canApply() { return mCanApply; }
+
     public void toggleSaved(){ mSaved = !mSaved; }
+
+    public void closeJob() { mCanApply = false; }
 
     public void addToApplicants(Seeker seeker){
         mApplicants.add(seeker);
+    }
+
+    public void acceptedOffer(Seeker seeker){
+        mEmployer.acceptedOffer(this, seeker);
     }
 }

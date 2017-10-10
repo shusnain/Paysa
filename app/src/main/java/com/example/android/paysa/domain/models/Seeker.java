@@ -106,11 +106,13 @@ public class Seeker {
     }
 
     public void addToJobsApplied(Job job) {
-        addToJobsSaved(job);
+        if(job.canApply()){
+            addToJobsSaved(job);
 
-        int positionJobsApplied = JobUtils.findJob(mJobsAppliedTo, job.getId());
-        if(positionJobsApplied == -1){
-            JobUtils.addToJobsList(mJobsAppliedTo, job);
+            int positionJobsApplied = JobUtils.findJob(mJobsAppliedTo, job.getId());
+            if(positionJobsApplied == -1){
+                JobUtils.addToJobsList(mJobsAppliedTo, job);
+            }
         }
     }
 
@@ -161,6 +163,23 @@ public class Seeker {
     public void removeFromAllJobsLists(Job job){
         removeFromJobsAppliedTo(job);
         removeFromJobsSaved(job);
+        removeFromJobsOffered(job);
+    }
+
+    public void applyToJob(Job job){
+        addToJobsApplied(job);
+        job.addToApplicants(this);
+    }
+
+    public void jobOffered(Job job){
+        addToJobsOffered(job);
+    }
+
+    public void acceptOffer(Job job){
+        job.acceptedOffer(this);
+    }
+
+    public void declineOffer(Job job){
         removeFromJobsOffered(job);
     }
 
