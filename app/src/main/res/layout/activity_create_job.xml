@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.android.paysa.presentation.ui.activities.CreateJobActivity"
+    android:orientation="vertical"
+    android:focusableInTouchMode="true">
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/job_title_text_input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="30dp">
+
+        <EditText
+            android:id="@+id/job_title_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:maxLines="1"
+            android:hint="@string/job_title"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
+        <TextView
+            android:id="@+id/start_date_text_view"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="Date"
+            android:onClick="showDatePickerDialog"
+            android:textColor="@color/textColor"
+            android:paddingLeft="30dp"/>
+
+        <TextView
+            android:id="@+id/start_time_text_view"
+            android:layout_width="85dp"
+            android:layout_height="wrap_content"
+            android:onClick="showTimePickerDialog"
+            android:text="Time"
+            android:paddingLeft="10dp"
+            android:textColor="@color/textColor"/>
+    </LinearLayout>
+
+
+</LinearLayout>

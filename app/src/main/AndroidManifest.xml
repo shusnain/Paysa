@@ -14,7 +14,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".presentation.ui.activities.MainActivity">
+        <activity android:name=".presentation.ui.activities.MainActivity"
+            android:label="Paysa"
+            android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,8 +24,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginActivity"
-            android:label="@string/title_activity_login"></activity>
+            android:name=".presentation.ui.activities.LoginActivity"
+            android:label="@string/title_activity_login" />
+        <activity android:name=".presentation.ui.activities.CreateJobActivity"></activity>
     </application>
 
 </manifest>

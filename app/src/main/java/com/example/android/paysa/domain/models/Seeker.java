@@ -183,4 +183,8 @@ public class Seeker {
         removeFromJobsOffered(job);
     }
 
+    public void offerRevoked(Job job){
+        removeFromJobsOffered(job);
+    }
+
 }

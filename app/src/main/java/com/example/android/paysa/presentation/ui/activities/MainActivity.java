@@ -1,9 +1,13 @@
 package com.example.android.paysa.presentation.ui.activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import com.example.android.paysa.domain.executors.impl.ThreadExecutor;
 import com.example.android.paysa.domain.models.Job;
@@ -29,9 +33,6 @@ public class MainActivity extends AppCompatActivity implements
     private CardAdapter mCardAdapter;
 
     private MainPresenter mMainPresenter;
-
-
-    Map<String, String> dummyData = new HashMap<String, String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +63,24 @@ public class MainActivity extends AppCompatActivity implements
         );
 
         mRecyclerView.setAdapter(mCardAdapter);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if(id == R.id.action_create_job){
+            Intent startCreateJobActivity = new Intent(this, CreateJobActivity.class);
+            startActivity(startCreateJobActivity);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

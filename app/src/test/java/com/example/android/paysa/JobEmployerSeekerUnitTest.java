@@ -97,6 +97,37 @@ public class JobEmployerSeekerUnitTest {
     }
 
     @Test
+    public void remove_Jobs() throws Exception{
+        int x = 10;
+        Job[] jobsList = new Job[x];
+        for(int i =0; i < x; i++){
+            jobsList[i] = (null);
+        }
+
+        try{
+            for(int i = 0; i < x; i++){
+                String s = Integer.toBinaryString(i);
+                jobsList[i] = new Job(i, s, s, i, startDate, endDate, employer1);
+            }
+
+        } catch (Exception e){
+            fail("ERROR: Jobs not created");
+        }
+
+        for(int i = 0; i < x; i++){
+            employer1.addToAllJobs(jobsList[i]);
+        }
+
+        assertEquals(10, employer1.getAllJobs().size());
+
+        for(int i = 0; i < x; i++){
+            employer1.removeFromAllJobs(jobsList[i]);
+        }
+
+        assertEquals(0, employer1.getAllJobs().size());
+    }
+
+    @Test
     public void job_Offer_Accepted() throws Exception{
         Job job1 = null;
         try{

@@ -2,6 +2,10 @@
     <string name="app_name">Paysa</string>
     <string name="title_activity_login">Sign in</string>
 
+    <!-- Strings related to create job activity -->
+    <string name="action_create_job">Create Job</string>
+    <string name="job_title">Job Title</string>
+
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password (optional)</string>

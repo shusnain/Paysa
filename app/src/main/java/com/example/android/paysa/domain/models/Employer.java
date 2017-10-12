@@ -102,6 +102,11 @@ public class Employer {
         seeker.jobOffered(job);
     }
 
+    public void revokeOffer(Seeker seeker, Job job){
+        seeker.offerRevoked(job);
+        job.offerRevoked();
+    }
+
     public void acceptedOffer(Job job, Seeker seeker){
         job.closeJob();
         job.setEmployee(seeker);

@@ -135,4 +135,13 @@ public class Job implements Comparable<Job>{
     public void acceptedOffer(Seeker seeker){
         mEmployer.acceptedOffer(this, seeker);
     }
+
+    public void offerRevoked(){
+        if(mEmployee != null){
+            mEmployee = null;
+        }
+        if(!mCanApply){
+            mCanApply = true;
+        }
+    }
 }
