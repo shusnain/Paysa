@@ -13,8 +13,23 @@ import java.util.Calendar;
  * Created by S_Husnain on 2017-10-11.
  */
 
-public class TimePickerFragment extends DialogFragment implements
-        TimePickerDialog.OnTimeSetListener{
+public class TimePickerFragment extends DialogFragment
+                                implements TimePickerDialog.OnTimeSetListener{
+
+    private TimePickerFragmentListener mListener;
+
+    private int mId;
+
+    public static TimePickerFragment newInstance(int id, TimePickerFragmentListener listener){
+        TimePickerFragment fragment = new TimePickerFragment();
+        fragment.setListener(listener);
+        fragment.setFragmentId(id);
+        return  fragment;
+    }
+
+    public interface TimePickerFragmentListener{
+        void onTimeSet(int id, int hour, int minute);
+    }
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -29,7 +44,29 @@ public class TimePickerFragment extends DialogFragment implements
     }
 
     @Override
-    public void onTimeSet(TimePicker timePicker, int i, int i1) {
+    public void onTimeSet(TimePicker timePicker, int hour, int minute) {
+        notifyTimePickerListener(hour, minute);
+    }
 
+    public TimePickerFragmentListener getListener(){
+        return mListener;
+    }
+
+    public void setListener(TimePickerFragmentListener listener){
+        mListener = listener;
+    }
+
+    public int getFragmentId(){
+        return mId;
+    }
+
+    public void setFragmentId(int id){
+        mId = id;
+    }
+
+    protected void notifyTimePickerListener(int hour, int minute){
+        if(mListener != null){
+            mListener.onTimeSet(mId, hour, minute);
+        }
     }
 }

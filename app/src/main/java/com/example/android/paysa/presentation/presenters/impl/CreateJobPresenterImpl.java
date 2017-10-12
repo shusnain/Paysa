@@ -55,29 +55,59 @@ public class CreateJobPresenterImpl extends AbstractPresenter implements CreateJ
 
     }
 
+    private Calendar getNearestHourCalendar(){
+        Calendar calendar = Calendar.getInstance();
+
+        calendar.add(Calendar.HOUR_OF_DAY, 1);
+
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+
+        return calendar;
+    }
+
     @Override
     public String getStartDate() {
-        // Create an instance of SimpleDateFormat used for formatting
-// the string representation of date (month/day/year)
         DateFormat df = new SimpleDateFormat("EEE, MMM dd, yyyy");
 
-// Get the date today using Calendar object.
-        Date today = Calendar.getInstance().getTime();
+        Date today = getNearestHourCalendar().getTime();
 
         return df.format(today);
     }
 
     @Override
     public String getStartTime() {
-        // Create an instance of SimpleDateFormat used for formatting
-// the string representation of date (month/day/year)
         DateFormat df = new SimpleDateFormat("hh:mm a");
 
-// Get the date today using Calendar object.
-        Date today = Calendar.getInstance().getTime();
-// Using DateFormat format method we can create a string
-// representation of a date with the defined format.
+        Date today = getNearestHourCalendar().getTime();
+
         return df.format(today);
+    }
+
+    @Override
+    public String getEndDate() {
+        DateFormat df = new SimpleDateFormat("EEE, MMM dd, yyyy");
+
+        Calendar calendar = getNearestHourCalendar();
+
+        calendar.add(Calendar.HOUR_OF_DAY, 8);
+
+        Date date = calendar.getTime();
+
+        return df.format(date);
+    }
+
+    @Override
+    public String getEndTime() {
+        DateFormat df = new SimpleDateFormat("hh:mm a");
+
+        Calendar calendar = getNearestHourCalendar();
+
+        calendar.add(Calendar.HOUR_OF_DAY, 8);
+
+        Date date = calendar.getTime();
+
+        return df.format(date);
     }
 
     @Override

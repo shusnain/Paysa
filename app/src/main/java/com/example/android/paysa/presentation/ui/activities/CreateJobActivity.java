@@ -1,6 +1,5 @@
 package com.example.android.paysa.presentation.ui.activities;
 
-import android.app.DialogFragment;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -12,20 +11,23 @@ import android.widget.TextView;
 
 import com.example.android.paysa.R;
 import com.example.android.paysa.domain.executors.impl.ThreadExecutor;
-import com.example.android.paysa.domain.models.Job;
 import com.example.android.paysa.presentation.presenters.CreateJobPresenter;
 import com.example.android.paysa.presentation.presenters.impl.CreateJobPresenterImpl;
 import com.example.android.paysa.presentation.ui.fragments.DatePickerFragment;
 import com.example.android.paysa.presentation.ui.fragments.TimePickerFragment;
 import com.example.android.paysa.threading.MainThreadImpl;
 
-import java.util.List;
-
-public class CreateJobActivity extends AppCompatActivity implements CreateJobPresenter.CreateJobView {
+public class CreateJobActivity extends AppCompatActivity implements CreateJobPresenter.CreateJobView,
+        DatePickerFragment.DatePickerFragmentListener,
+        TimePickerFragment.TimePickerFragmentListener{
 
     private TextInputLayout mJobTitleInputLayout;
 
     private TextView mStartDateTextView, mStartTimeTextView, mEndDateTextView, mEndTimeTextView;
+
+    DatePickerFragment mStartDateFragment, mEndDateFragment;
+
+    TimePickerFragment mStartTimeFragment, mEndTimeFragment;
 
     private EditText mJobTitleEditTextView;
 
@@ -63,14 +65,30 @@ public class CreateJobActivity extends AppCompatActivity implements CreateJobPre
 
         mStartTimeTextView = (TextView) findViewById(R.id.start_time_text_view);
 
+        mEndDateTextView = (TextView) findViewById(R.id.end_date_text_view);
+
+        mEndTimeTextView = (TextView) findViewById(R.id.end_time_text_view);
+
         mPresenter = new CreateJobPresenterImpl(
                 ThreadExecutor.getInstance(),
                 MainThreadImpl.getInstance(),
                 this);
 
-        mStartDateTextView.setText(mPresenter.getStartDate());
+        String startDate = mPresenter.getStartDate();
 
-        mStartTimeTextView.setText(mPresenter.getStartTime());
+        String startTime = mPresenter.getStartTime();
+
+        String endDate = mPresenter.getEndDate();
+
+        String endTime = mPresenter.getEndTime();
+
+        mStartDateTextView.setText(startDate);
+
+        mStartTimeTextView.setText(startTime);
+
+        mEndDateTextView.setText(endDate);
+
+        mEndTimeTextView.setText(endTime);
     }
 
     @Override
@@ -89,12 +107,64 @@ public class CreateJobActivity extends AppCompatActivity implements CreateJobPre
     }
 
     public void showTimePickerDialog(View v) {
-        DialogFragment newFragment = new TimePickerFragment();
-        newFragment.show(getFragmentManager(), "timePicker");
+        int id = v.getId();
+        if(id == R.id.start_time_text_view){
+            if(mStartTimeFragment == null){
+                mStartTimeFragment = TimePickerFragment.newInstance(id, this);
+            }
+            mStartTimeFragment.show(getFragmentManager(), "timePicker");
+        }
+
+        if(id == R.id.end_time_text_view){
+            if(mEndTimeFragment == null){
+                mEndTimeFragment = TimePickerFragment.newInstance(id, this);
+            }
+            mEndTimeFragment.show(getFragmentManager(), "timePicker");
+        }
+
     }
 
     public void showDatePickerDialog(View v) {
-        DialogFragment newFragment = new DatePickerFragment();
-        newFragment.show(getFragmentManager(), "datePicker");
+        int id = v.getId();
+        if(id == R.id.start_date_text_view){
+            if(mStartDateFragment == null){
+                mStartDateFragment = DatePickerFragment.newInstance(id, this);
+            }
+
+            mStartDateFragment.show(getFragmentManager(), "datePicker");
+        }
+
+        if(id == R.id.end_date_text_view){
+            if(mEndDateFragment == null){
+                mEndDateFragment = DatePickerFragment.newInstance(id, this);
+            }
+
+            mEndDateFragment.show(getFragmentManager(), "datePicker");
+        }
+
+    }
+
+    @Override
+    public void onDateSet(int id, int year, int month, int day) {
+        String date = mPresenter.formatDate(year, month, day);
+        if(id == R.id.start_date_text_view){
+            mStartDateTextView.setText(date);
+        }
+
+        if(id == R.id.end_date_text_view){
+            mEndDateTextView.setText(date);
+        }
+    }
+
+    @Override
+    public void onTimeSet(int id, int hour, int minute) {
+        String time = mPresenter.formatTime(hour, minute);
+        if(id == R.id.start_time_text_view){
+            mStartTimeTextView.setText(time);
+        }
+
+        if(id == R.id.end_time_text_view){
+            mEndTimeTextView.setText(time);
+        }
     }
 }

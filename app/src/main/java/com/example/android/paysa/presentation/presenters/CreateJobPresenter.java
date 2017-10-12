@@ -16,6 +16,10 @@ public interface CreateJobPresenter extends BasePresenter {
 
     String getStartTime();
 
+    String getEndDate();
+
+    String getEndTime();
+
     String formatDate(int year, int month, int day);
 
     String formatTime(int hour, int min);

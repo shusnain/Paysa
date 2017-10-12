@@ -17,7 +17,20 @@ import java.util.Calendar;
 public class DatePickerFragment extends DialogFragment
                                 implements DatePickerDialog.OnDateSetListener{
 
-//    DatePickerDialog.OnDateSetListener mCallback;
+    private DatePickerFragmentListener mListener;
+
+    private int mId;
+
+    public static DatePickerFragment newInstance(int id, DatePickerFragmentListener listener){
+        DatePickerFragment fragment = new DatePickerFragment();
+        fragment.setListener(listener);
+        fragment.setFragmentId(id);
+        return fragment;
+    }
+
+    public interface DatePickerFragmentListener{
+        void onDateSet(int id, int year, int month, int day);
+    }
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -31,20 +44,30 @@ public class DatePickerFragment extends DialogFragment
         return new DatePickerDialog(getActivity(), this, year, month, day);
     }
 
-//    @Override
-//    public void onAttach(Context context) {
-//        super.onAttach(context);
-//
-//        try{
-//            mCallback = (DatePickerDialog.OnDateSetListener) context;
-//        } catch(Exception e){
-//            throw new ClassCastException(context.toString() +
-//            "must implement OnDateSetListener");
-//        }
-//    }
-
     @Override
     public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+        notifyDatePickerListener(year, month, day);
+    }
 
+    public DatePickerFragmentListener getListner(){
+        return mListener;
+    }
+
+    public void setListener(DatePickerFragmentListener listener){
+        mListener = listener;
+    }
+
+    public int getFragmentId(){
+        return mId;
+    }
+
+    public void setFragmentId(int id){
+        mId = id;
+    }
+
+    protected void notifyDatePickerListener(int year, int month, int day){
+        if(mListener != null){
+            mListener.onDateSet(mId, year, month, day);
+        }
     }
 }

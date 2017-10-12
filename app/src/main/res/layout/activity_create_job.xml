@@ -25,9 +25,7 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp">
+        android:orientation="horizontal">
         <TextView
             android:id="@+id/start_date_text_view"
             android:layout_width="300dp"
@@ -35,7 +33,10 @@
             android:text="Date"
             android:onClick="showDatePickerDialog"
             android:textColor="@color/textColor"
-            android:paddingLeft="30dp"/>
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="30dp"
+            android:background="?selectableItemBackground"/>
 
         <TextView
             android:id="@+id/start_time_text_view"
@@ -43,8 +44,39 @@
             android:layout_height="wrap_content"
             android:onClick="showTimePickerDialog"
             android:text="Time"
+            android:textColor="@color/textColor"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:paddingLeft="10dp"
-            android:textColor="@color/textColor"/>
+            android:background="?selectableItemBackground"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/end_date_text_view"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="Date"
+            android:onClick="showDatePickerDialog"
+            android:textColor="@color/textColor"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="30dp"
+            android:background="?selectableItemBackground"/>
+
+        <TextView
+            android:id="@+id/end_time_text_view"
+            android:layout_width="85dp"
+            android:layout_height="wrap_content"
+            android:onClick="showTimePickerDialog"
+            android:text="Time"
+            android:textColor="@color/textColor"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:background="?selectableItemBackground"/>
     </LinearLayout>
 
 
