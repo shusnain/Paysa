@@ -6,6 +6,7 @@
     <string name="action_create_job">Create Job</string>
     <string name="job_title">Title</string>
     <string name="job_description">Description</string>
+    <string name="job_wage">Wage</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
@@ -21,4 +22,5 @@
     </string>
 
     <string name="save">Save</string>
+    <string name="post">Post</string>
 </resources>

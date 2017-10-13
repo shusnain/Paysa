@@ -123,4 +123,9 @@ public class CreateJobPresenterImpl extends AbstractPresenter implements CreateJ
         Calendar time = new GregorianCalendar(0, 0, 0, hour, min);
         return df.format(time.getTime());
     }
+
+    @Override
+    public String[] getWageTime() {
+        return new String[]{"Hourly", "Monthly", "Yearly"};
+    }
 }

@@ -23,4 +23,6 @@ public interface CreateJobPresenter extends BasePresenter {
     String formatDate(int year, int month, int day);
 
     String formatTime(int hour, int min);
+
+    String[] getWageTime();
 }

@@ -8,12 +8,17 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.android.paysa.R;
 import com.example.android.paysa.domain.executors.impl.ThreadExecutor;
@@ -35,7 +40,9 @@ public class CreateJobActivity extends AppCompatActivity implements CreateJobPre
 
     TimePickerFragment mStartTimeFragment, mEndTimeFragment;
 
-    private EditText mJobTitleEditTextView, mJobDescriptionEditTextView;
+    private EditText mJobTitleEditTextView, mJobDescriptionEditTextView, mWageEditTextView;
+
+    Spinner mWageSpinner;
 
     private CreateJobPresenter mPresenter;
 
@@ -48,11 +55,42 @@ public class CreateJobActivity extends AppCompatActivity implements CreateJobPre
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.job_create, menu);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if(id == android.R.id.home){
             onBackPressed();
         }
+
+        if(id == R.id.action_job_save){
+            onBackPressed();
+            Context context = getApplicationContext();
+            String toastText = "Job saved";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, toastText, duration);
+            toast.show();
+            return true;
+        }
+
+        if(id == R.id.action_job_post){
+            onBackPressed();
+            Context context = getApplicationContext();
+            String toastText = "Job posted";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, toastText, duration);
+            toast.show();
+            return true;
+        }
+
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -63,11 +101,13 @@ public class CreateJobActivity extends AppCompatActivity implements CreateJobPre
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        mJobTitleInputLayout = (TextInputLayout) findViewById(R.id.job_title_text_input_layout);
+        mJobTitleEditTextView = (EditText) findViewById(R.id.job_title_edit_text);
 
         mJobDescriptionEditTextView = (EditText) findViewById(R.id.job_description_edit_text);
 
-        mJobTitleEditTextView = (EditText) findViewById(R.id.job_title_edit_text);
+        mWageEditTextView = (EditText) findViewById(R.id.wage_edit_text);
+
+        mWageSpinner = (Spinner) findViewById(R.id.wage_spinner);
 
         mStartDateTextView = (TextView) findViewById(R.id.start_date_text_view);
 
@@ -81,6 +121,14 @@ public class CreateJobActivity extends AppCompatActivity implements CreateJobPre
                 ThreadExecutor.getInstance(),
                 MainThreadImpl.getInstance(),
                 this);
+
+        String[] spinnerItems = mPresenter.getWageTime();
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, spinnerItems);
+
+        mWageSpinner.setAdapter(adapter);
+
+        mWageSpinner.setSelection(0);
 
         String startDate = mPresenter.getStartDate();
 
