@@ -1,11 +1,17 @@
 package com.example.android.paysa.presentation.ui.activities;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Rect;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -29,7 +35,7 @@ public class CreateJobActivity extends AppCompatActivity implements CreateJobPre
 
     TimePickerFragment mStartTimeFragment, mEndTimeFragment;
 
-    private EditText mJobTitleEditTextView;
+    private EditText mJobTitleEditTextView, mJobDescriptionEditTextView;
 
     private CreateJobPresenter mPresenter;
 
@@ -58,6 +64,8 @@ public class CreateJobActivity extends AppCompatActivity implements CreateJobPre
         }
 
         mJobTitleInputLayout = (TextInputLayout) findViewById(R.id.job_title_text_input_layout);
+
+        mJobDescriptionEditTextView = (EditText) findViewById(R.id.job_description_edit_text);
 
         mJobTitleEditTextView = (EditText) findViewById(R.id.job_title_edit_text);
 
@@ -166,5 +174,40 @@ public class CreateJobActivity extends AppCompatActivity implements CreateJobPre
         if(id == R.id.end_time_text_view){
             mEndTimeTextView.setText(time);
         }
+    }
+
+    public void showJobDescription(View view){
+        Intent startJobDescriptionActivity = new Intent(this, JobDescriptionActivity.class);
+        String description = mJobDescriptionEditTextView.getText().toString();
+        startJobDescriptionActivity.putExtra("description", description);
+        startActivityForResult(startJobDescriptionActivity, 1);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode == 1){
+            if(resultCode == Activity.RESULT_OK){
+                String description = data.getStringExtra("description");
+                mJobDescriptionEditTextView.setText(description);
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            View v = getCurrentFocus();
+            if ( v instanceof EditText) {
+                Rect outRect = new Rect();
+                v.getGlobalVisibleRect(outRect);
+                if (!outRect.contains((int)event.getRawX(), (int)event.getRawY())) {
+                    v.clearFocus();
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                }
+            }
+        }
+        return super.dispatchTouchEvent( event );
     }
 }

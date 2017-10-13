@@ -19,7 +19,7 @@ public class Job implements Comparable<Job>{
 
     private long mId;
     private String mTitle;
-    private String mInfo;
+    private String mDescription;
     private double mWage;
     private boolean mSaved;
     private Date mStartDate;
@@ -29,13 +29,13 @@ public class Job implements Comparable<Job>{
     private List<Seeker> mApplicants;
     private boolean mCanApply;
 
-    public Job(String title, String info, double wage, Date startDate, Date endDate, Employer employer) throws Exception{
+    public Job(String title, String description, double wage, Date startDate, Date endDate, Employer employer) throws Exception{
         if(startDate.after(endDate)){
             throw new Exception("startDate is after endDate");
         }
         mId = System.currentTimeMillis();
         mTitle = title;
-        mInfo = info;
+        mDescription = description;
         mWage = wage;
         mSaved = false;
         mStartDate = startDate;
@@ -47,13 +47,13 @@ public class Job implements Comparable<Job>{
     }
 
     // Constructor for Tests
-    public Job(long id, String title, String info, double wage, Date startDate, Date endDate, Employer employer) throws Exception{
+    public Job(long id, String title, String description, double wage, Date startDate, Date endDate, Employer employer) throws Exception{
         if(startDate.after(endDate)){
             throw new Exception("startDate is after endDate");
         }
         mId = id;
         mTitle = title;
-        mInfo = info;
+        mDescription = description;
         mWage = wage;
         mSaved = false;
         mStartDate = startDate;
@@ -64,13 +64,13 @@ public class Job implements Comparable<Job>{
         mCanApply = true;
     }
 
-    public Job(String title, String info, double wage, boolean saved,  Date startDate, Date endDate, Employer employer) throws Exception {
+    public Job(String title, String description, double wage, boolean saved,  Date startDate, Date endDate, Employer employer) throws Exception {
         if(startDate.after(endDate)){
             throw new Exception("startDate is after endDate");
         }
         mId = System.currentTimeMillis();
         mTitle = title;
-        mInfo = info;
+        mDescription = description;
         mWage = wage;
         mSaved = saved;
         mStartDate = startDate;
@@ -90,7 +90,7 @@ public class Job implements Comparable<Job>{
 
     public void setTitle(String title){ mTitle = title; }
 
-    public void setInfo(String info){ mInfo = info; }
+    public void setInfo(String description){ mDescription = description; }
 
     public void setWage(double wage){ mWage = wage; }
 
@@ -102,7 +102,7 @@ public class Job implements Comparable<Job>{
         return mTitle;
     }
 
-    public String getInfo(){ return mInfo; }
+    public String getInfo(){ return mDescription; }
 
     public double getWage(){ return mWage; }
 

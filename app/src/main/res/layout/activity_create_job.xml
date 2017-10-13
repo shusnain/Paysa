@@ -11,7 +11,9 @@
         android:id="@+id/job_title_text_input_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="30dp">
+        android:layout_marginLeft="@dimen/sideMargin"
+        android:layout_marginRight="@dimen/sideMargin"
+        android:paddingTop="10dp">
 
         <EditText
             android:id="@+id/job_title_edit_text"
@@ -22,20 +24,39 @@
 
     </android.support.design.widget.TextInputLayout>
 
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/sideMargin"
+        android:layout_marginRight="@dimen/sideMargin"
+        android:focusable="false">
+
+        <EditText
+            android:id="@+id/job_description_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="@string/job_description"
+            android:onClick="showJobDescription"
+            android:focusable="false"
+            android:maxLines="1"
+            android:ellipsize="end"/>
+
+    </android.support.design.widget.TextInputLayout>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <TextView
             android:id="@+id/start_date_text_view"
-            android:layout_width="300dp"
+            android:layout_width="270dp"
             android:layout_height="wrap_content"
             android:text="Date"
             android:onClick="showDatePickerDialog"
             android:textColor="@color/textColor"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:paddingLeft="30dp"
+            android:layout_marginLeft="@dimen/sideMargin"
             android:background="?selectableItemBackground"/>
 
         <TextView
@@ -56,14 +77,14 @@
         android:orientation="horizontal">
         <TextView
             android:id="@+id/end_date_text_view"
-            android:layout_width="300dp"
+            android:layout_width="270dp"
             android:layout_height="wrap_content"
             android:text="Date"
             android:onClick="showDatePickerDialog"
             android:textColor="@color/textColor"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:paddingLeft="30dp"
+            android:layout_marginLeft="@dimen/sideMargin"
             android:background="?selectableItemBackground"/>
 
         <TextView

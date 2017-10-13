@@ -4,7 +4,8 @@
 
     <!-- Strings related to create job activity -->
     <string name="action_create_job">Create Job</string>
-    <string name="job_title">Job Title</string>
+    <string name="job_title">Title</string>
+    <string name="job_description">Description</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
@@ -18,4 +19,6 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+
+    <string name="save">Save</string>
 </resources>
