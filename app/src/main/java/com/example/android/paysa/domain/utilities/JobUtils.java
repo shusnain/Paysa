@@ -16,7 +16,7 @@ public final class JobUtils {
         int low = 0;
         int high = length - 1;
         while(high >= low){
-            int mid = (low+high)/2;
+            int mid = low + (high - low)/2;
             Job x = jobsList.get(mid);
             long xId = x.getId();
             if(jobId == xId){
