@@ -6,6 +6,7 @@
     <string name="action_create_job">Create Job</string>
     <string name="job_title">Title</string>
     <string name="job_description">Description</string>
+    <string name="job_location">Location</string>
     <string name="job_wage">Wage</string>
 
     <!-- Strings related to login -->

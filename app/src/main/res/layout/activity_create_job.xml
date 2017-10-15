@@ -74,6 +74,23 @@
 
     </LinearLayout>
 
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/sideMargin"
+        android:layout_marginRight="@dimen/sideMargin"
+        android:focusable="false">
+
+        <EditText
+            android:id="@+id/job_location_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="@string/job_location"
+            android:onClick="showGoogleMapsLocation"
+            android:focusable="false" />
+
+    </android.support.design.widget.TextInputLayout>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

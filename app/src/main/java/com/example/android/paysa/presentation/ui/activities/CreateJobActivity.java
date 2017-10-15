@@ -231,6 +231,11 @@ public class CreateJobActivity extends AppCompatActivity implements CreateJobPre
         startActivityForResult(startJobDescriptionActivity, 1);
     }
 
+    // TODO:
+    public void showGoogleMapsLocation(View view){
+
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(requestCode == 1){
