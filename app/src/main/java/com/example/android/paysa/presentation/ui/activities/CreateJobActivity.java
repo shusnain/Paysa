@@ -162,44 +162,6 @@ public class CreateJobActivity extends AppCompatActivity implements CreateJobPre
 
     }
 
-    public void showTimePickerDialog(View v) {
-        int id = v.getId();
-        if(id == R.id.start_time_text_view){
-            if(mStartTimeFragment == null){
-                mStartTimeFragment = TimePickerFragment.newInstance(id, this);
-            }
-            mStartTimeFragment.show(getFragmentManager(), "timePicker");
-        }
-
-        if(id == R.id.end_time_text_view){
-            if(mEndTimeFragment == null){
-                mEndTimeFragment = TimePickerFragment.newInstance(id, this);
-            }
-            mEndTimeFragment.show(getFragmentManager(), "timePicker");
-        }
-
-    }
-
-    public void showDatePickerDialog(View v) {
-        int id = v.getId();
-        if(id == R.id.start_date_text_view){
-            if(mStartDateFragment == null){
-                mStartDateFragment = DatePickerFragment.newInstance(id, this);
-            }
-
-            mStartDateFragment.show(getFragmentManager(), "datePicker");
-        }
-
-        if(id == R.id.end_date_text_view){
-            if(mEndDateFragment == null){
-                mEndDateFragment = DatePickerFragment.newInstance(id, this);
-            }
-
-            mEndDateFragment.show(getFragmentManager(), "datePicker");
-        }
-
-    }
-
     @Override
     public void onDateSet(int id, int year, int month, int day) {
         String date = mPresenter.formatDate(year, month, day);
@@ -224,6 +186,47 @@ public class CreateJobActivity extends AppCompatActivity implements CreateJobPre
         }
     }
 
+    @Override
+    public void showTimePickerDialog(View v) {
+        int id = v.getId();
+        if(id == R.id.start_time_text_view){
+            if(mStartTimeFragment == null){
+                mStartTimeFragment = TimePickerFragment.newInstance(id, this);
+            }
+            mStartTimeFragment.show(getFragmentManager(), "timePicker");
+        }
+
+        if(id == R.id.end_time_text_view){
+            if(mEndTimeFragment == null){
+                mEndTimeFragment = TimePickerFragment.newInstance(id, this);
+            }
+            mEndTimeFragment.show(getFragmentManager(), "timePicker");
+        }
+
+    }
+
+    @Override
+    public void showDatePickerDialog(View v) {
+        int id = v.getId();
+        if(id == R.id.start_date_text_view){
+            if(mStartDateFragment == null){
+                mStartDateFragment = DatePickerFragment.newInstance(id, this);
+            }
+
+            mStartDateFragment.show(getFragmentManager(), "datePicker");
+        }
+
+        if(id == R.id.end_date_text_view){
+            if(mEndDateFragment == null){
+                mEndDateFragment = DatePickerFragment.newInstance(id, this);
+            }
+
+            mEndDateFragment.show(getFragmentManager(), "datePicker");
+        }
+
+    }
+
+    @Override
     public void showJobDescription(View view){
         Intent startJobDescriptionActivity = new Intent(this, JobDescriptionActivity.class);
         String description = mJobDescriptionEditTextView.getText().toString();
@@ -232,6 +235,7 @@ public class CreateJobActivity extends AppCompatActivity implements CreateJobPre
     }
 
     // TODO:
+    @Override
     public void showGoogleMapsLocation(View view){
 
     }

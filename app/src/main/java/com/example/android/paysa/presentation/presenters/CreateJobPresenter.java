@@ -1,5 +1,7 @@
 package com.example.android.paysa.presentation.presenters;
 
+import android.view.View;
+
 import com.example.android.paysa.presentation.presenters.base.BasePresenter;
 import com.example.android.paysa.presentation.ui.BaseView;
 
@@ -9,7 +11,13 @@ import com.example.android.paysa.presentation.ui.BaseView;
 
 public interface CreateJobPresenter extends BasePresenter {
     interface CreateJobView extends BaseView{
+        void showTimePickerDialog(View v);
 
+        void showDatePickerDialog(View v);
+
+        void showJobDescription(View view);
+
+        void showGoogleMapsLocation(View view);
     }
 
     String getStartDate();

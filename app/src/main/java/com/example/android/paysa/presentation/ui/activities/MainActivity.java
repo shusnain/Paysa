@@ -80,6 +80,11 @@ public class MainActivity extends AppCompatActivity implements
             startActivity(startCreateJobActivity);
             return true;
         }
+        if(id == R.id.action_create_user_profile){
+            Intent startCreateUserProfileActivity = new Intent(this, CreateUserProfileActivity.class);
+            startActivity(startCreateUserProfileActivity);
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 

@@ -9,6 +9,14 @@
     <string name="job_location">Location</string>
     <string name="job_wage">Wage</string>
 
+    <!-- Strings related to create user profile activity -->
+    <string name="action_create_user_profile">Create User</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="user_location">Location</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="email_address">Email Address</string>
+
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password (optional)</string>
