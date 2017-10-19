@@ -21,6 +21,7 @@ public class Job implements Comparable<Job>{
     private String mTitle;
     private String mDescription;
     private double mWage;
+    private String mWageFrequency;
     private boolean mSaved;
     private Date mStartDate;
     private Date mEndDate;
@@ -29,7 +30,7 @@ public class Job implements Comparable<Job>{
     private List<Seeker> mApplicants;
     private boolean mCanApply;
 
-    public Job(String title, String description, double wage, Date startDate, Date endDate, Employer employer) throws Exception{
+    public Job(String title, String description, double wage, String wageFrequency, Date startDate, Date endDate, Employer employer) throws Exception{
         if(startDate.after(endDate)){
             throw new Exception("startDate is after endDate");
         }
@@ -37,6 +38,7 @@ public class Job implements Comparable<Job>{
         mTitle = title;
         mDescription = description;
         mWage = wage;
+        mWageFrequency = wageFrequency;
         mSaved = false;
         mStartDate = startDate;
         mEndDate = endDate;
@@ -47,7 +49,7 @@ public class Job implements Comparable<Job>{
     }
 
     // Constructor for Tests
-    public Job(long id, String title, String description, double wage, Date startDate, Date endDate, Employer employer) throws Exception{
+    public Job(long id, String title, String description, double wage, String wageFrequency, Date startDate, Date endDate, Employer employer) throws Exception{
         if(startDate.after(endDate)){
             throw new Exception("startDate is after endDate");
         }
@@ -55,6 +57,7 @@ public class Job implements Comparable<Job>{
         mTitle = title;
         mDescription = description;
         mWage = wage;
+        mWageFrequency = wageFrequency;
         mSaved = false;
         mStartDate = startDate;
         mEndDate = endDate;
@@ -94,6 +97,8 @@ public class Job implements Comparable<Job>{
 
     public void setWage(double wage){ mWage = wage; }
 
+    public void setWageFrequency(String frequency){ mWageFrequency = frequency; }
+
     public void setSaved(boolean saved){ mSaved = saved;}
 
     public long getId() { return mId; }
@@ -105,6 +110,8 @@ public class Job implements Comparable<Job>{
     public String getInfo(){ return mDescription; }
 
     public double getWage(){ return mWage; }
+
+    public String getWageFrequency() { return mWageFrequency; }
 
     public Date getStartDate(){ return mStartDate; }
 

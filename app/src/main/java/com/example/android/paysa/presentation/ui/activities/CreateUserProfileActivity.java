@@ -12,6 +12,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.android.paysa.R;
 import com.example.android.paysa.domain.executors.impl.ThreadExecutor;
@@ -67,6 +68,27 @@ public class CreateUserProfileActivity extends AppCompatActivity implements Crea
         int id = item.getItemId();
         if(id == android.R.id.home){
             onBackPressed();
+        }
+        if(id == R.id.action_job_save){
+            onBackPressed();
+            Context context = getApplicationContext();
+            String toastText = "Job saved";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, toastText, duration);
+            toast.show();
+            return true;
+        }
+
+        if(id == R.id.action_job_post){
+            onBackPressed();
+            Context context = getApplicationContext();
+            String toastText = "Job posted";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, toastText, duration);
+            toast.show();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }

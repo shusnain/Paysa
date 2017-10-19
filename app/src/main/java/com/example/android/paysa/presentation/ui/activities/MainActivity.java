@@ -85,6 +85,11 @@ public class MainActivity extends AppCompatActivity implements
             startActivity(startCreateUserProfileActivity);
             return true;
         }
+        if(id == R.id.action_card_swipe){
+            Intent startSwipeStackActivity = new Intent(this, CardSwipeActivity.class);
+            startActivity(startSwipeStackActivity);
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 

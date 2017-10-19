@@ -34,7 +34,8 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAlQFjs9XlGZxx58PKaEEZt7p4k7wbm2RA" />
 
-        <activity android:name=".presentation.ui.activities.CreateUserProfileActivity"></activity>
+        <activity android:name=".presentation.ui.activities.CreateUserProfileActivity" />
+        <activity android:name=".presentation.ui.activities.CardSwipeActivity"></activity>
     </application>
 
 </manifest>
