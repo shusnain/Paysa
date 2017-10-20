@@ -27,8 +27,6 @@ public class CardSwipeActivity extends AppCompatActivity implements MainPresente
 
     private MainPresenter mMainPresenter;
 
-    private int currentPosition;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +37,6 @@ public class CardSwipeActivity extends AppCompatActivity implements MainPresente
     }
 
     private void init(){
-        currentPosition = 0;
 
         mCardStack = (SwipeStack) findViewById(R.id.swipe_stack);
 

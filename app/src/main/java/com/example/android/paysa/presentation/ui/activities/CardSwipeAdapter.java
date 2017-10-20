@@ -26,7 +26,7 @@ public class CardSwipeAdapter extends BaseAdapter {
     private Activity mActivity;
 
     public CardSwipeAdapter(Activity activity){
-        mJobData = new ArrayList<Job>();
+        mJobData = new ArrayList<>();
         mActivity = activity;
     }
 
