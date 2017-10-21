@@ -13,6 +13,7 @@
         android:layout_height="wrap_content">
 
             <RelativeLayout
+                android:id="@+id/view_group"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
@@ -23,6 +24,7 @@
                     android:layout_marginLeft="@dimen/cardSideMargin"
                     android:layout_marginRight="@dimen/cardSideMargin"
                     android:scaleType="fitXY" />
+
 
                 <ImageView
                     android:id="@+id/iv_save"
@@ -35,33 +37,104 @@
                     android:layout_alignRight="@+id/iv_card"
                     android:layout_alignEnd="@+id/iv_card" />
 
+
+                <TextView
+                    android:id="@+id/card_gradient"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/cardgrad"
+                    android:layout_alignTop="@+id/tv_title_text"
+                    android:layout_alignBottom="@+id/tv_wage"
+                    android:layout_alignLeft="@+id/iv_card"
+                    android:layout_alignStart="@+id/iv_card"
+                    android:layout_alignRight="@+id/iv_card"
+                    android:layout_alignEnd="@+id/iv_card"/>
+
                 <TextView
                     android:id="@+id/tv_title_text"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/title_text"
                     android:textColor="@color/textColor"
                     android:textStyle="bold"
-                    android:layout_above="@+id/tv_info_text"
+                    android:paddingLeft="@dimen/cardTextSidePadding"
+                    android:layout_above="@+id/tv_location"
+                    android:layout_alignLeft="@+id/iv_card"
+                    android:layout_alignStart="@+id/iv_card"
+                    android:text="Title"/>
+
+                <TextView
+                    android:id="@+id/tv_bullet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginStart="5dp"
+                    android:textColor="@color/textColor"
+                    android:layout_alignBaseline="@+id/tv_title_text"
+                    android:layout_alignBottom="@+id/tv_title_text"
+                    android:layout_toRightOf="@+id/tv_title_text"
+                    android:layout_toEndOf="@+id/tv_title_text"
+                    android:text="&#8226;"/>
+
+                <TextView
+                    android:id="@+id/tv_employer_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/info_text"
+                    android:textColor="@color/textColor"
+                    android:paddingLeft="@dimen/cardTextSidePadding"
+                    android:paddingRight="@dimen/cardTextSidePadding"
+                    android:paddingBottom="@dimen/cardTextSidePadding"
+                    android:layout_alignBaseline="@+id/tv_title_text"
+                    android:layout_alignBottom="@+id/tv_title_text"
+                    android:layout_toRightOf="@+id/tv_bullet"
+                    android:layout_toEndOf="@+id/tv_bullet"
+                    android:text="Employer"/>
+
+
+                <TextView
+                    android:id="@+id/tv_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/location_text"
+                    android:textColor="@color/locationTextColor"
+                    android:paddingLeft="@dimen/cardTextSidePadding"
+                    android:paddingRight="@dimen/cardTextSidePadding"
+                    android:layout_above="@id/tv_wage"
                     android:layout_alignLeft="@+id/iv_card"
                     android:layout_alignStart="@+id/iv_card"
                     android:layout_alignRight="@+id/iv_card"
                     android:layout_alignEnd="@+id/iv_card"
-                    android:background="@drawable/titlegrad"/>
+                    android:text="Location"/>
 
                 <TextView
-                    android:id="@+id/tv_info_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="43dp"
-                    android:minHeight="200dp"
+                    android:id="@+id/tv_wage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:textSize="@dimen/info_text"
-                    android:maxLines="2"
-                    android:ellipsize="end"
                     android:textColor="@color/textColor"
-                    android:layout_marginLeft="@dimen/cardSideMargin"
-                    android:layout_marginRight="@dimen/cardSideMargin"
+                    android:paddingLeft="@dimen/cardTextSidePadding"
+                    android:paddingRight="@dimen/cardTextSidePadding"
+                    android:paddingBottom="@dimen/cardTextSidePadding"
+                    android:layout_alignLeft="@+id/iv_card"
+                    android:layout_alignStart="@+id/iv_card"
+                    android:layout_alignRight="@+id/iv_card"
                     android:layout_alignBottom="@id/iv_card"
-                    android:background="@drawable/infograd"/>
+                    android:text="Wage"/>
+
+                <TextView
+                    android:id="@+id/tv_wage_frequency"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/info_text"
+                    android:textColor="@color/textColor"
+                    android:paddingLeft="@dimen/cardTextSidePadding"
+                    android:paddingRight="@dimen/cardTextSidePadding"
+                    android:text="Frequency"
+                    android:layout_alignBaseline="@+id/tv_wage"
+                    android:layout_alignBottom="@+id/tv_wage"
+                    android:layout_toRightOf="@+id/tv_wage"
+                    android:layout_toEndOf="@+id/tv_wage" />
 
             </RelativeLayout>
     </android.support.v7.widget.CardView>

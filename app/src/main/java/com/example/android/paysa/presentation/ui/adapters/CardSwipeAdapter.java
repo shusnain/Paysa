@@ -1,4 +1,4 @@
-package com.example.android.paysa.presentation.ui.activities;
+package com.example.android.paysa.presentation.ui.adapters;
 
 import android.app.Activity;
 import android.content.res.Resources;
@@ -46,19 +46,23 @@ public class CardSwipeAdapter extends BaseAdapter {
     }
 
     private class ViewHolder{
-        public final TextView mCardTextView;
-        public final TextView mCardTitleView;
+//        public final TextView mCardTextView;
+        public final TextView mJobTitleView, mJobWageView, mJobWageFrequencyView, mEmployerNameView, mJobLocationView;
         public final ImageView mCardImageView;
 
         public ViewHolder(View itemView){
-            mCardTextView = (TextView) itemView.findViewById(R.id.tv_info_text);
-            mCardTitleView = (TextView) itemView.findViewById(R.id.tv_title_text);
+//            mCardTextView = (TextView) itemView.findViewById(R.id.tv_info_text);
+            mJobTitleView = (TextView) itemView.findViewById(R.id.tv_title_text);
+            mJobWageView = (TextView) itemView.findViewById(R.id.tv_wage);
+            mJobWageFrequencyView = (TextView) itemView.findViewById(R.id.tv_wage_frequency);
+            mEmployerNameView = (TextView) itemView.findViewById(R.id.tv_employer_name);
+            mJobLocationView = (TextView) itemView.findViewById(R.id.tv_location);
             mCardImageView = (ImageView) itemView.findViewById(R.id.iv_card);
         }
     }
 
     @Override
-    public View getView(int i, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
 
         LayoutInflater inflater = (LayoutInflater) mActivity.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
@@ -72,11 +76,22 @@ public class CardSwipeAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        String cardTitle = mJobData.get(i).getTitle();
-        holder.mCardTitleView.setText(cardTitle);
+        Job job = mJobData.get(position);
 
-        String cardText = mJobData.get(i).getInfo();
-        holder.mCardTextView.setText(cardText);
+        String location = job.getLocation();
+        holder.mJobLocationView.setText(location);
+
+        String employerName = job.getEmployerName();
+        holder.mEmployerNameView.setText(employerName);
+
+        String cardTitle = job.getTitle();
+        holder.mJobTitleView.setText(cardTitle);
+
+        String jobWage = Double.toString(job.getWage());
+        holder.mJobWageView.setText(jobWage);
+
+        String jobFrequency = job.getWageFrequency();
+        holder.mJobWageFrequencyView.setText(jobFrequency);
 
         holder.mCardImageView.setImageResource(R.drawable.better_call_saul);
 

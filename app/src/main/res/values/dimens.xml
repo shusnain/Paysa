@@ -2,8 +2,10 @@
 <resources>
     <!-- Card Dimensions -->
     <dimen name="title_text">18sp</dimen>
-    <dimen name="info_text">14sp</dimen>
+    <dimen name="info_text">15sp</dimen>
+    <dimen name="location_text">12sp</dimen>
     <dimen name="cardSideMargin">20dp</dimen>
+    <dimen name="cardTextSidePadding">5dp</dimen>
     <dimen name="cardTopMargin">7dp</dimen>
     <dimen name="cardImageHeight">230dp</dimen>
     <dimen name="spacingBetweenCards">15dp</dimen>

@@ -11,11 +11,10 @@ import com.example.android.paysa.domain.executors.impl.ThreadExecutor;
 import com.example.android.paysa.domain.models.Job;
 import com.example.android.paysa.presentation.presenters.MainPresenter;
 import com.example.android.paysa.presentation.presenters.impl.MainPresenterImpl;
-import com.example.android.paysa.presentation.ui.adapters.CardAdapter;
+import com.example.android.paysa.presentation.ui.adapters.CardSwipeAdapter;
 import com.example.android.paysa.threading.MainThreadImpl;
 
 import java.util.List;
-import java.util.zip.Inflater;
 
 import link.fls.swipestack.SwipeStack;
 
@@ -26,6 +25,8 @@ public class CardSwipeActivity extends AppCompatActivity implements MainPresente
     private CardSwipeAdapter mCardSwipeAdapter;
 
     private MainPresenter mMainPresenter;
+
+    private int mCurrentPosition;
 
 
     @Override
@@ -38,6 +39,8 @@ public class CardSwipeActivity extends AppCompatActivity implements MainPresente
 
     private void init(){
 
+        mCurrentPosition = 0;
+
         mCardStack = (SwipeStack) findViewById(R.id.swipe_stack);
 
         mCardSwipeAdapter = new CardSwipeAdapter(this);
@@ -49,6 +52,23 @@ public class CardSwipeActivity extends AppCompatActivity implements MainPresente
                 MainThreadImpl.getInstance(),
                 this
         );
+
+        mCardStack.setListener(new SwipeStack.SwipeStackListener() {
+            @Override
+            public void onViewSwipedToLeft(int position) {
+                mCurrentPosition = position + 1;
+            }
+
+            @Override
+            public void onViewSwipedToRight(int position) {
+                mCurrentPosition = position + 1;
+            }
+
+            @Override
+            public void onStackEmpty() {
+                mCardStack.resetStack();
+            }
+        });
     }
 
     @Override

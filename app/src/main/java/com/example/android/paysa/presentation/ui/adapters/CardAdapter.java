@@ -60,20 +60,31 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardAdapterVie
     @Override
     public void onBindViewHolder(CardAdapter.CardAdapterViewHolder holder, final int position) {
 
-        String cardTitle = mJobData.get(position).getTitle();
-        holder.mCardTitleView.setText(cardTitle);
+        Job job = mJobData.get(position);
 
-        String cardText = mJobData.get(position).getInfo();
-        holder.mCardTextView.setText(cardText);
+        String location = job.getLocation();
+        holder.mJobLocationView.setText(location);
 
-        boolean saved = mJobData.get(position).isSaved();
+        String employerName = job.getEmployerName();
+        holder.mEmployerNameView.setText(employerName);
+
+        String cardTitle = job.getTitle();
+        holder.mJobTitleView.setText(cardTitle);
+
+        String jobWage = Double.toString(job.getWage());
+        holder.mJobWageView.setText(jobWage);
+
+        String jobFrequency = job.getWageFrequency();
+        holder.mJobWageFrequencyView.setText(jobFrequency);
+
+        holder.mCardImageView.setImageResource(R.drawable.better_call_saul);
+
+        boolean saved = job.isSaved();
         if(saved){
             holder.mCardSaveImageView.setImageResource(R.drawable.star_filled);
         } else{
             holder.mCardSaveImageView.setImageResource(R.drawable.star);
         }
-
-        holder.mCardImageView.setImageResource(R.drawable.better_call_saul);
     }
 
     @Override
@@ -81,15 +92,19 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardAdapterVie
 
 
     class CardAdapterViewHolder extends RecyclerView.ViewHolder  {
-        public final TextView mCardTextView;
-        public final TextView mCardTitleView;
+//        public final TextView mCardTextView;
+        public final TextView mJobTitleView, mJobWageView, mJobWageFrequencyView, mEmployerNameView, mJobLocationView;
         public final ImageView mCardImageView;
         public final ImageView mCardSaveImageView;
 
         public CardAdapterViewHolder(View itemView){
             super(itemView);
-            mCardTextView = (TextView) itemView.findViewById(R.id.tv_info_text);
-            mCardTitleView = (TextView) itemView.findViewById(R.id.tv_title_text);
+//            mCardTextView = (TextView) itemView.findViewById(R.id.tv_info_text);
+            mJobTitleView = (TextView) itemView.findViewById(R.id.tv_title_text);
+            mJobWageView = (TextView) itemView.findViewById(R.id.tv_wage);
+            mJobWageFrequencyView = (TextView) itemView.findViewById(R.id.tv_wage_frequency);
+            mEmployerNameView = (TextView) itemView.findViewById(R.id.tv_employer_name);
+            mJobLocationView = (TextView) itemView.findViewById(R.id.tv_location);
             mCardImageView = (ImageView) itemView.findViewById(R.id.iv_card);
             mCardSaveImageView = (ImageView) itemView.findViewById(R.id.iv_save);
 
