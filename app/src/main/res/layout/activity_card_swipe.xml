@@ -10,7 +10,7 @@
     <link.fls.swipestack.SwipeStack
         android:id="@+id/swipe_stack"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="400dp"
         app:stack_rotation="0"/>
 
     <RelativeLayout

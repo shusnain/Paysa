@@ -90,6 +90,11 @@ public class MainActivity extends AppCompatActivity implements
             startActivity(startSwipeStackActivity);
             return true;
         }
+        if(id == R.id.login){
+            Intent startLoginActivity = new Intent(this, LoginActivity.class);
+            startActivity(startLoginActivity);
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 

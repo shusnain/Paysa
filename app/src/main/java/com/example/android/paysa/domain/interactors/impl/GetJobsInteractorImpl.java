@@ -39,7 +39,7 @@ public class GetJobsInteractorImpl extends AbstractInteractor implements GetJobs
     }
 
     public List<Job> createDummyCards() {
-        List<Job> dummyJobs = new ArrayList<Job>();
+        List<Job> dummyJobs = new ArrayList<>();
         Date startDate = new GregorianCalendar(2017, Calendar.JANUARY, 1).getTime();
         Date endDate = new GregorianCalendar(2017, Calendar.JANUARY, 2).getTime();
 
