@@ -9,7 +9,7 @@ import android.os.Looper;
 import com.example.android.paysa.domain.executors.MainThread;
 
 /**
- * This class makes sure that the runnable we provide will be run on the main UI thread.
+ * This class makes sure that the runnable we provide will be run on the home UI thread.
  */
 public class MainThreadImpl implements MainThread {
 

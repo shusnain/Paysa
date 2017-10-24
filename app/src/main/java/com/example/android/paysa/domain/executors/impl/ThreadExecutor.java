@@ -45,7 +45,7 @@ public class ThreadExecutor implements Executor {
         mThreadPoolExecutor.submit(new Runnable() {
             @Override
             public void run() {
-                // run the main logic
+                // run the home logic
                 interactor.run();
 
                 // mark it as finished

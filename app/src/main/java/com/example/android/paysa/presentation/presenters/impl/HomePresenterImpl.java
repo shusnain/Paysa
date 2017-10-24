@@ -5,7 +5,7 @@ import com.example.android.paysa.domain.executors.MainThread;
 import com.example.android.paysa.domain.interactors.GetJobsInteractor;
 import com.example.android.paysa.domain.interactors.impl.GetJobsInteractorImpl;
 import com.example.android.paysa.domain.models.Job;
-import com.example.android.paysa.presentation.presenters.MainPresenter;
+import com.example.android.paysa.presentation.presenters.HomePresenter;
 import com.example.android.paysa.presentation.presenters.base.AbstractPresenter;
 
 import java.util.List;
@@ -14,12 +14,12 @@ import java.util.List;
  * Created by S_Husnain on 2017-09-30.
  */
 
-public class MainPresenterImpl extends AbstractPresenter implements MainPresenter,
+public class HomePresenterImpl extends AbstractPresenter implements HomePresenter,
         GetJobsInteractor.Callback {
 
-    private MainPresenter.View mView;
+    private HomePresenter.View mView;
 
-    public MainPresenterImpl(Executor executor,
+    public HomePresenterImpl(Executor executor,
                              MainThread mainThread,
                              View view) {
         super(executor, mainThread);

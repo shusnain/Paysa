@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".presentation.ui.activities.MainActivity"
+            android:name=".presentation.ui.activities.HomeActivity"
             android:label="Paysa"
             android:launchMode="singleTop">
             <intent-filter>
@@ -35,7 +35,8 @@
             android:value="AIzaSyAlQFjs9XlGZxx58PKaEEZt7p4k7wbm2RA" />
 
         <activity android:name=".presentation.ui.activities.CreateUserProfileActivity" />
-        <activity android:name=".presentation.ui.activities.CardSwipeActivity"></activity>
+        <activity android:name=".presentation.ui.activities.CardSwipeActivity" />
+        <activity android:name=".presentation.ui.activities.MainActivity"></activity>
     </application>
 
 </manifest>

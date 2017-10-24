@@ -9,8 +9,8 @@ import android.view.MenuItem;
 import com.example.android.paysa.R;
 import com.example.android.paysa.domain.executors.impl.ThreadExecutor;
 import com.example.android.paysa.domain.models.Job;
-import com.example.android.paysa.presentation.presenters.MainPresenter;
-import com.example.android.paysa.presentation.presenters.impl.MainPresenterImpl;
+import com.example.android.paysa.presentation.presenters.HomePresenter;
+import com.example.android.paysa.presentation.presenters.impl.HomePresenterImpl;
 import com.example.android.paysa.presentation.ui.adapters.CardSwipeAdapter;
 import com.example.android.paysa.threading.MainThreadImpl;
 
@@ -18,13 +18,13 @@ import java.util.List;
 
 import link.fls.swipestack.SwipeStack;
 
-public class CardSwipeActivity extends AppCompatActivity implements MainPresenter.View {
+public class CardSwipeActivity extends AppCompatActivity implements HomePresenter.View {
 
     private SwipeStack mCardStack;
 
     private CardSwipeAdapter mCardSwipeAdapter;
 
-    private MainPresenter mMainPresenter;
+    private HomePresenter mMainPresenter;
 
     private int mCurrentPosition;
 
@@ -47,7 +47,7 @@ public class CardSwipeActivity extends AppCompatActivity implements MainPresente
 
         mCardStack.setAdapter(mCardSwipeAdapter);
 
-        mMainPresenter = new MainPresenterImpl(
+        mMainPresenter = new HomePresenterImpl(
                 ThreadExecutor.getInstance(),
                 MainThreadImpl.getInstance(),
                 this

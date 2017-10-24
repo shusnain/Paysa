@@ -10,7 +10,7 @@ import java.util.List;
  * Created by S_Husnain on 2017-09-30.
  */
 
-public interface MainPresenter extends BasePresenter {
+public interface HomePresenter extends BasePresenter {
 
     interface View extends BaseView {
         // TODO: Add your view methods
