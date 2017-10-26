@@ -17,11 +17,11 @@ import java.util.List;
 public class HomePresenterImpl extends AbstractPresenter implements HomePresenter,
         GetJobsInteractor.Callback {
 
-    private HomePresenter.View mView;
+    private HomePresenter.HomeView mView;
 
     public HomePresenterImpl(Executor executor,
                              MainThread mainThread,
-                             View view) {
+                             HomeView view) {
         super(executor, mainThread);
         mView = view;
     }

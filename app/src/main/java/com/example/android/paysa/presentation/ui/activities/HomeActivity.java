@@ -12,7 +12,6 @@ import android.view.MenuItem;
 import com.example.android.paysa.domain.executors.impl.ThreadExecutor;
 import com.example.android.paysa.domain.models.Job;
 import com.example.android.paysa.presentation.presenters.HomePresenter;
-import com.example.android.paysa.presentation.presenters.HomePresenter.View;
 import com.example.android.paysa.presentation.presenters.impl.HomePresenterImpl;
 import com.example.android.paysa.presentation.ui.adapters.CardAdapter;
 import com.example.android.paysa.R;
@@ -21,7 +20,7 @@ import com.example.android.paysa.threading.MainThreadImpl;
 import java.util.List;
 
 public class HomeActivity extends AppCompatActivity implements
-        View,
+        HomePresenter.HomeView,
         CardAdapter.CardAdapterOnClickHandler{
 
     private static final String TAG = HomeActivity.class.getSimpleName();

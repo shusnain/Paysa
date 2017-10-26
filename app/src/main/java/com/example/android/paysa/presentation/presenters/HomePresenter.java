@@ -12,7 +12,7 @@ import java.util.List;
 
 public interface HomePresenter extends BasePresenter {
 
-    interface View extends BaseView {
+    interface HomeView extends BaseView {
         // TODO: Add your view methods
         public void setCards(List<Job> jobs);
     }
