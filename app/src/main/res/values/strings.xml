@@ -33,4 +33,10 @@
 
     <string name="save">Save</string>
     <string name="post">Post</string>
+
+    <!-- Shared Prefernces -->
+    <string name="saved_is_logged_in">saved_is_logged_in</string>
+    <string name="saved_email">saved_email</string>
+    <string name="saved_password">saved_password</string>
+
 </resources>

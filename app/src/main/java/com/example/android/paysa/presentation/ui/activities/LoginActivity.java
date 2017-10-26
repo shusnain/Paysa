@@ -38,6 +38,7 @@ import com.example.android.paysa.R;
 import com.example.android.paysa.domain.executors.Executor;
 import com.example.android.paysa.domain.executors.MainThread;
 import com.example.android.paysa.domain.executors.impl.ThreadExecutor;
+import com.example.android.paysa.domain.utilities.LoginUtils;
 import com.example.android.paysa.presentation.presenters.LoginPresenter;
 import com.example.android.paysa.presentation.presenters.impl.LoginPresenterImpl;
 import com.example.android.paysa.threading.MainThreadImpl;
@@ -67,6 +68,11 @@ public class LoginActivity extends AppCompatActivity implements LoginPresenter.L
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        if(LoginUtils.isLoggedIn(this)){
+            goHome();
+            finish();
+        }
 
         mPresenter = new LoginPresenterImpl(
                 ThreadExecutor.getInstance(),
@@ -290,8 +296,17 @@ public class LoginActivity extends AppCompatActivity implements LoginPresenter.L
 
     @Override
     public void loginSuccess() {
+        String email = mEmailView.getText().toString();
+        String password = mPasswordView.getText().toString();
+        LoginUtils.setLogin(this,email, password);
         hideProgress();
+        goHome();
         finish();
+    }
+
+    public void goHome(){
+        Intent startHomeActivity = new Intent(this, HomeActivity.class);
+        startActivity(startHomeActivity);
     }
 }
 
