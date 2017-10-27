@@ -11,6 +11,7 @@ import android.view.MenuItem;
 
 import com.example.android.paysa.R;
 import com.example.android.paysa.domain.utilities.CardUtil;
+import com.example.android.paysa.domain.utilities.LoginUtils;
 import com.example.android.paysa.presentation.ui.adapters.HomeViewPagerAdapter;
 import com.example.android.paysa.presentation.ui.fragments.JobCardsFragment;
 
@@ -47,6 +48,7 @@ public class HomeActivity extends AppCompatActivity{
         HomeViewPagerAdapter adapter = new HomeViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(JobCardsFragment.newInstance(CardUtil.CardType.SAVED), "Saved");
         adapter.addFragment(JobCardsFragment.newInstance(CardUtil.CardType.APPLIED), "Applied");
+        adapter.addFragment(JobCardsFragment.newInstance(CardUtil.CardType.OFFERED), "Offered");
         viewPager.setAdapter(adapter);
     }
 
@@ -70,7 +72,11 @@ public class HomeActivity extends AppCompatActivity{
         }
         if(id == R.id.login){
             Intent startLoginActivity = new Intent(this, LoginActivity.class);
+            startLoginActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(startLoginActivity);
+            return true;
+        } if (id == R.id.logout){
+            LoginUtils.logout(this);
             return true;
         }
         return super.onOptionsItemSelected(item);

@@ -5,4 +5,8 @@
     <color name="colorAccent">#FF4081</color>
     <color name="textColor">#FFFFFF</color>
     <color name="locationTextColor">#dbdbdb</color>
+
+    <!-- Card Tab Colours -->
+    <color name="tabTextColorSelected">#FFFFFF</color>
+    <color name="tabTextColorUnselected">#bfbfbf</color>
 </resources>

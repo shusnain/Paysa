@@ -1,5 +1,7 @@
 package com.example.android.paysa.presentation.presenters.impl;
 
+import android.content.Context;
+
 import com.example.android.paysa.domain.executors.Executor;
 import com.example.android.paysa.domain.executors.MainThread;
 import com.example.android.paysa.domain.interactors.LoginInteractor;

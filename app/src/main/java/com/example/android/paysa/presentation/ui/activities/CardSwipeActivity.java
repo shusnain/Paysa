@@ -44,6 +44,8 @@ public class CardSwipeActivity extends AppCompatActivity implements HomePresente
 
         mCurrentPosition = 0;
 
+        mType = CardUtil.CardType.SAVED;
+
         mCardStack = (SwipeStack) findViewById(R.id.swipe_stack);
 
         mCardSwipeAdapter = new CardSwipeAdapter(this);
@@ -118,6 +120,6 @@ public class CardSwipeActivity extends AppCompatActivity implements HomePresente
 
     @Override
     public CardUtil.CardType getType() {
-        return null;
+        return mType;
     }
 }
