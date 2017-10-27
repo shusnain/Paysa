@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import com.example.android.paysa.R;
 import com.example.android.paysa.domain.executors.impl.ThreadExecutor;
 import com.example.android.paysa.domain.models.Job;
+import com.example.android.paysa.domain.utilities.CardUtil;
 import com.example.android.paysa.presentation.presenters.HomePresenter;
 import com.example.android.paysa.presentation.presenters.impl.HomePresenterImpl;
 import com.example.android.paysa.presentation.ui.adapters.CardSwipeAdapter;
@@ -18,13 +19,15 @@ import java.util.List;
 
 import link.fls.swipestack.SwipeStack;
 
-public class CardSwipeActivity extends AppCompatActivity implements HomePresenter.View {
+public class CardSwipeActivity extends AppCompatActivity implements HomePresenter.HomeView {
 
     private SwipeStack mCardStack;
 
     private CardSwipeAdapter mCardSwipeAdapter;
 
     private HomePresenter mMainPresenter;
+
+    private CardUtil.CardType mType;
 
     private int mCurrentPosition;
 
@@ -111,5 +114,10 @@ public class CardSwipeActivity extends AppCompatActivity implements HomePresente
     @Override
     public void setCards(List<Job> jobs) {
         mCardSwipeAdapter.setCardData(jobs);
+    }
+
+    @Override
+    public CardUtil.CardType getType() {
+        return null;
     }
 }

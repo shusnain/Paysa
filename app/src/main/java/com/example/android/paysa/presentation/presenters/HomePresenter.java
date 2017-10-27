@@ -1,6 +1,7 @@
 package com.example.android.paysa.presentation.presenters;
 
 import com.example.android.paysa.domain.models.Job;
+import com.example.android.paysa.domain.utilities.CardUtil;
 import com.example.android.paysa.presentation.presenters.base.BasePresenter;
 import com.example.android.paysa.presentation.ui.BaseView;
 
@@ -14,7 +15,9 @@ public interface HomePresenter extends BasePresenter {
 
     interface HomeView extends BaseView {
         // TODO: Add your view methods
-        public void setCards(List<Job> jobs);
+        void setCards(List<Job> jobs);
+
+        CardUtil.CardType getType();
     }
 
     // TODO: Add your presenter methods

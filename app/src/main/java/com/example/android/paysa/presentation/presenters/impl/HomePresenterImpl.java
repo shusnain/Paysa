@@ -5,6 +5,7 @@ import com.example.android.paysa.domain.executors.MainThread;
 import com.example.android.paysa.domain.interactors.GetJobsInteractor;
 import com.example.android.paysa.domain.interactors.impl.GetJobsInteractorImpl;
 import com.example.android.paysa.domain.models.Job;
+import com.example.android.paysa.domain.utilities.CardUtil;
 import com.example.android.paysa.presentation.presenters.HomePresenter;
 import com.example.android.paysa.presentation.presenters.base.AbstractPresenter;
 
@@ -53,7 +54,8 @@ public class HomePresenterImpl extends AbstractPresenter implements HomePresente
 
     @Override
     public void getCards() {
-        GetJobsInteractor getJobsInteractor = new GetJobsInteractorImpl(mExecutor, mMainThread, this, null);
+        CardUtil.CardType type = mView.getType();
+        GetJobsInteractor getJobsInteractor = new GetJobsInteractorImpl(mExecutor, mMainThread, this, null, type);
         getJobsInteractor.execute();
     }
 

@@ -40,7 +40,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardAdapterVie
      */
 
     public CardAdapter(CardAdapterOnClickHandler clickHandler){
-        mJobData = new ArrayList<Job>();
+        mJobData = new ArrayList<>();
         mClickHandler = clickHandler;
     }
 
