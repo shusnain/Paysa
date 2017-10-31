@@ -28,7 +28,7 @@
             android:name=".presentation.ui.activities.LoginActivity"
             android:label="@string/title_activity_login" />
         <activity android:name=".presentation.ui.activities.CreateJobActivity" />
-        <activity android:name=".presentation.ui.activities.JobDescriptionActivity" />
+        <activity android:name=".presentation.ui.activities.SetJobDescriptionActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

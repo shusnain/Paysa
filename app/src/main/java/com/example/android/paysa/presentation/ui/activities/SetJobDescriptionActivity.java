@@ -11,14 +11,14 @@ import android.widget.EditText;
 
 import com.example.android.paysa.R;
 
-public class JobDescriptionActivity extends AppCompatActivity {
+public class SetJobDescriptionActivity extends AppCompatActivity {
 
     private EditText mDescription;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_job_description);
+        setContentView(R.layout.activity_set_job_description);
         init();
     }
 

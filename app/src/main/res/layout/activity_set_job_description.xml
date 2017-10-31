@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.android.paysa.presentation.ui.activities.JobDescriptionActivity">
+    tools:context="com.example.android.paysa.presentation.ui.activities.SetJobDescriptionActivity">
 
     <EditText
         android:id="@+id/job_description_full_edit_text"

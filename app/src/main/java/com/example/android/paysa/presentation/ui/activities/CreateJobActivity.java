@@ -228,7 +228,7 @@ public class CreateJobActivity extends AppCompatActivity implements CreateJobPre
 
     @Override
     public void showJobDescription(View view){
-        Intent startJobDescriptionActivity = new Intent(this, JobDescriptionActivity.class);
+        Intent startJobDescriptionActivity = new Intent(this, SetJobDescriptionActivity.class);
         String description = mJobDescriptionEditTextView.getText().toString();
         startJobDescriptionActivity.putExtra("description", description);
         startActivityForResult(startJobDescriptionActivity, 1);
