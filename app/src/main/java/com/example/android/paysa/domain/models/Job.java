@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Date;
@@ -15,7 +16,7 @@ import static android.content.ContentValues.TAG;
  * Created by S_Husnain on 2017-09-30.
  */
 
-public class Job implements Comparable<Job>{
+public class Job implements Comparable<Job>, Serializable{
 
     private long mId;
     private String mTitle;

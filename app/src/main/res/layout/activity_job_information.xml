@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.android.paysa.presentation.ui.activities.JobInformationActivity">
+    
+    <ImageView
+        android:id="@+id/iv_job"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/cardImageHeight"
+        android:scaleType="fitXY"/>
+
+    <TextView
+        android:id="@+id/tv_job_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/jobInformationTextSize"
+        android:layout_marginLeft="@dimen/sideMargin"
+        android:layout_marginRight="@dimen/sideMargin"
+        android:hint="Title"/>
+
+    <TextView
+        android:id="@+id/tv_job_employer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/sideMargin"
+        android:layout_marginRight="@dimen/sideMargin"
+        android:textSize="@dimen/jobInformationTextSize"
+        android:hint="Employer"/>
+
+    <TextView
+        android:id="@+id/tv_job_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/sideMargin"
+        android:layout_marginRight="@dimen/sideMargin"
+        android:textSize="@dimen/jobInformationTextSize"
+        android:hint="Location"/>
+
+    <TextView
+        android:id="@+id/tv_job_wage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/sideMargin"
+        android:layout_marginRight="@dimen/sideMargin"
+        android:textSize="@dimen/jobInformationTextSize"
+        android:hint="Wage"/>
+
+</LinearLayout>

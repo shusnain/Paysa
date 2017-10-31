@@ -37,6 +37,7 @@
         <activity android:name=".presentation.ui.activities.CreateUserProfileActivity" />
         <activity android:name=".presentation.ui.activities.CardSwipeActivity" />
         <activity android:name=".presentation.ui.activities.HomeActivity" />
+        <activity android:name=".presentation.ui.activities.JobInformationActivity"></activity>
     </application>
 
 </manifest>

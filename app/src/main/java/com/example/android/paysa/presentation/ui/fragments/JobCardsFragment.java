@@ -1,5 +1,7 @@
 package com.example.android.paysa.presentation.ui.fragments;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -15,6 +17,7 @@ import com.example.android.paysa.domain.models.Job;
 import com.example.android.paysa.domain.utilities.CardUtil;
 import com.example.android.paysa.presentation.presenters.HomePresenter;
 import com.example.android.paysa.presentation.presenters.impl.HomePresenterImpl;
+import com.example.android.paysa.presentation.ui.activities.JobInformationActivity;
 import com.example.android.paysa.presentation.ui.adapters.CardAdapter;
 import com.example.android.paysa.threading.MainThreadImpl;
 
@@ -118,9 +121,17 @@ public class JobCardsFragment extends Fragment implements
     public void onClick(int viewID, Job job) {
         if(viewID == R.id.iv_save){
             job.toggleSaved();
+            mCardAdapter.notifyDataSetChanged();
         } else if (viewID == R.id.iv_card){
-            job.setTitle("Change");
+            startJobInformationActivity(job);
         }
-        mCardAdapter.notifyDataSetChanged();
+    }
+
+    private void startJobInformationActivity(Job job){
+        Context context = getContext();
+        Intent startJobInfromationActivity = new Intent(context, JobInformationActivity.class);
+        Bundle b = new Bundle();
+        startJobInfromationActivity.putExtra("job",job);
+        startActivity(startJobInfromationActivity);
     }
 }
