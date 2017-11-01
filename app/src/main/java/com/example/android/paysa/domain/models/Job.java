@@ -108,7 +108,7 @@ public class Job implements Comparable<Job>, Serializable{
         return mTitle;
     }
 
-    public String getInfo(){ return mDescription; }
+    public String getDescription(){ return mDescription; }
 
     public double getWage(){ return mWage; }
 

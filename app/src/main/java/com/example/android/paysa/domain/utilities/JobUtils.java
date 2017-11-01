@@ -2,6 +2,8 @@ package com.example.android.paysa.domain.utilities;
 
 import com.example.android.paysa.domain.models.Job;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Collections;
 import java.util.List;
 
@@ -33,5 +35,17 @@ public final class JobUtils {
     public static void addToJobsList(List<Job> jobList, Job job){
         jobList.add(job);
         Collections.sort(jobList);
+    }
+
+    public static String formatJobWage(double wage, String frequency){
+        String time = "";
+        if(frequency.equals("Hourly")){
+            time = "Hour";
+        }else if (frequency.equals("Monthly")){
+            time = "Month";
+        }else if(frequency.equals("Yearly")){
+            time = "Year";
+        }
+        return "$" + Double.toString(wage) + "/" + time;
     }
 }

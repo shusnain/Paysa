@@ -1,52 +1,164 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.example.android.paysa.presentation.ui.activities.JobInformationActivity">
-    
-    <ImageView
-        android:id="@+id/iv_job"
+    android:fitsSystemWindows="true">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar_layout"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/cardImageHeight"
-        android:scaleType="fitXY"/>
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/tv_job_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/jobInformationTextSize"
-        android:layout_marginLeft="@dimen/sideMargin"
-        android:layout_marginRight="@dimen/sideMargin"
-        android:hint="Title"/>
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:contentScrim="?attr/colorPrimary"
+            app:expandedTitleMarginStart="48dp"
+            app:expandedTitleMarginEnd="64dp"
+            android:fitsSystemWindows="true">
 
-    <TextView
-        android:id="@+id/tv_job_employer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/sideMargin"
-        android:layout_marginRight="@dimen/sideMargin"
-        android:textSize="@dimen/jobInformationTextSize"
-        android:hint="Employer"/>
+            <!--<ImageView-->
+                <!--android:id="@+id/iv_job"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="@dimen/cardImageHeight"-->
+                <!--android:scaleType="fitXY"-->
+                <!--android:fitsSystemWindows="true"-->
+                <!--app:layout_collapseMode="parallax"/>-->
 
-    <TextView
-        android:id="@+id/tv_job_location"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/sideMargin"
-        android:layout_marginRight="@dimen/sideMargin"
-        android:textSize="@dimen/jobInformationTextSize"
-        android:hint="Location"/>
+            <!--<android.support.v7.widget.Toolbar-->
+                <!--android:id="@+id/toolbar"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="?attr/actionBarSize"-->
+                <!--app:layout_collapseMode="pin"/>-->
 
-    <TextView
-        android:id="@+id/tv_job_wage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/sideMargin"
-        android:layout_marginRight="@dimen/sideMargin"
-        android:textSize="@dimen/jobInformationTextSize"
-        android:hint="Wage"/>
+        </android.support.design.widget.CollapsingToolbarLayout>
 
-</LinearLayout>
+    </android.support.design.widget.AppBarLayout>
+    
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="7dp"
+                    android:paddingBottom="7dp">
+
+                    <TextView
+                        android:id="@+id/about_job"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/jobInformationTextSize1"
+                        android:layout_marginLeft="@dimen/jobInformationSideMargin"
+                        android:layout_marginRight="@dimen/jobInformationSideMargin"
+                        android:paddingBottom="@dimen/jobInformationHeaderPadding"
+                        android:text="About the job"/>
+
+                    <TextView
+                        android:id="@+id/tv_job_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/jobInformationTextSize1"
+                        android:layout_marginLeft="@dimen/jobInformationSideMargin"
+                        android:layout_marginRight="@dimen/jobInformationSideMargin"
+                        android:layout_below="@id/about_job"
+                        android:textStyle="bold"
+                        android:text="Title"/>
+
+                    <TextView
+                        android:id="@+id/tv_job_employer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/jobInformationSideMargin"
+                        android:layout_marginRight="@dimen/jobInformationSideMargin"
+                        android:textSize="@dimen/jobInformationTextSize1"
+                        android:layout_below="@id/tv_job_title"
+                        android:text="Employer"/>
+
+                    <TextView
+                        android:id="@+id/tv_job_location"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/jobInformationSideMargin"
+                        android:layout_marginRight="@dimen/jobInformationSideMargin"
+                        android:textSize="@dimen/jobInformationTextSize3"
+                        android:layout_below="@id/tv_job_employer"
+                        android:text="Location"/>
+
+                    <TextView
+                        android:id="@+id/tv_job_wage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/jobInformationSideMargin"
+                        android:layout_marginRight="@dimen/jobInformationSideMargin"
+                        android:textSize="@dimen/jobInformationTextSize4"
+                        android:layout_below="@id/tv_job_location"
+                        android:text="Wage"/>
+
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingTop="7dp"
+                    android:paddingBottom="7dp">
+
+                    <TextView
+                        android:id="@+id/description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/jobInformationTextSize1"
+                        android:layout_marginLeft="@dimen/jobInformationSideMargin"
+                        android:layout_marginRight="@dimen/jobInformationSideMargin"
+                        android:paddingBottom="@dimen/jobInformationHeaderPadding"
+                        android:text="Description"/>
+
+                    <TextView
+                        android:id="@+id/tv_job_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/jobInformationSideMargin"
+                        android:layout_marginRight="@dimen/jobInformationSideMargin"
+                        android:textSize="@dimen/jobInformationTextSize2"
+                        android:layout_below="@id/tv_job_wage"
+                        android:text="Description" />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+
+
+
+
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.design.widget.CoordinatorLayout>
