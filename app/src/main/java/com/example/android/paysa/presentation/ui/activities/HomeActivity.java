@@ -37,6 +37,8 @@ public class HomeActivity extends AppCompatActivity{
 
     private void init(){
 
+        getSupportActionBar().setElevation(0);
+
         mViewPager = (ViewPager) findViewById(R.id.view_pager);
         setupViewPager(mViewPager);
 

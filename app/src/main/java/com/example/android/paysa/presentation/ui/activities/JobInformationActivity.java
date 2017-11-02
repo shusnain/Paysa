@@ -1,8 +1,11 @@
 package com.example.android.paysa.presentation.ui.activities;
 
+import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.Window;
 import android.widget.ImageView;
@@ -18,6 +21,7 @@ public class JobInformationActivity extends AppCompatActivity {
 
     private TextView mJobTitleView, mJobWageView, mJobDescriptionView, mEmployerNameView, mJobLocationView;
     private ImageView mCardImageView;
+    private CollapsingToolbarLayout mCollapsingToolbarLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,10 +39,12 @@ public class JobInformationActivity extends AppCompatActivity {
 
     private void init(){
 
-//        ActionBar actionBar = this.getSupportActionBar();
-//        if(actionBar != null){
-//            actionBar.setDisplayHomeAsUpEnabled(true);
-//        }
+        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        mCollapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        mCollapsingToolbarLayout.setExpandedTitleColor(ContextCompat.getColor(this, android.R.color.transparent));
+
 
         mJobTitleView = (TextView) findViewById(R.id.tv_job_title);
         mEmployerNameView = (TextView) findViewById(R.id.tv_job_employer);
@@ -47,7 +53,7 @@ public class JobInformationActivity extends AppCompatActivity {
         mJobDescriptionView = (TextView) findViewById(R.id.tv_job_description);
 
         //TODO: Fix CollapsingToolbar
-//        mCardImageView = (ImageView) findViewById(R.id.iv_job);
+        mCardImageView = (ImageView) findViewById(R.id.iv_job);
     }
 
     @Override
@@ -68,6 +74,7 @@ public class JobInformationActivity extends AppCompatActivity {
 
         String jobTitle = mJob.getTitle();
         mJobTitleView.setText(jobTitle);
+        mCollapsingToolbarLayout.setTitle(jobTitle);
 
         double jobWage = mJob.getWage();
         String jobFrequency = mJob.getWageFrequency();
@@ -77,6 +84,6 @@ public class JobInformationActivity extends AppCompatActivity {
         String description = mJob.getDescription();
         mJobDescriptionView.setText(description);
 
-//        mCardImageView.setImageResource(R.drawable.better_call_saul);
+        mCardImageView.setImageResource(R.drawable.better_call_saul);
     }
 }
