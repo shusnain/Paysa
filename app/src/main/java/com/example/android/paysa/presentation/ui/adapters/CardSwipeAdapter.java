@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.example.android.paysa.R;
 import com.example.android.paysa.domain.models.Job;
+import com.example.android.paysa.domain.utilities.JobUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,14 +48,14 @@ public class CardSwipeAdapter extends BaseAdapter {
 
     private class ViewHolder{
 //        public final TextView mCardTextView;
-        public final TextView mJobTitleView, mJobWageView, mJobWageFrequencyView, mEmployerNameView, mJobLocationView;
+        public final TextView mJobTitleView, mJobWageView, mEmployerNameView, mJobLocationView;
         public final ImageView mCardImageView;
 
         public ViewHolder(View itemView){
 //            mCardTextView = (TextView) itemView.findViewById(R.id.tv_info_text);
             mJobTitleView = (TextView) itemView.findViewById(R.id.tv_title_text);
             mJobWageView = (TextView) itemView.findViewById(R.id.tv_wage);
-            mJobWageFrequencyView = (TextView) itemView.findViewById(R.id.tv_wage_frequency);
+//            mJobWageFrequencyView = (TextView) itemView.findViewById(R.id.tv_wage_frequency);
             mEmployerNameView = (TextView) itemView.findViewById(R.id.tv_employer_name);
             mJobLocationView = (TextView) itemView.findViewById(R.id.tv_location);
             mCardImageView = (ImageView) itemView.findViewById(R.id.iv_card);
@@ -87,11 +88,10 @@ public class CardSwipeAdapter extends BaseAdapter {
         String cardTitle = job.getTitle();
         holder.mJobTitleView.setText(cardTitle);
 
-        String jobWage = Double.toString(job.getWage());
-        holder.mJobWageView.setText(jobWage);
-
+        Double jobWage = job.getWage();
         String jobFrequency = job.getWageFrequency();
-        holder.mJobWageFrequencyView.setText(jobFrequency);
+        holder.mJobWageView.setText(JobUtils.formatJobWage(jobWage, jobFrequency));
+
 
         holder.mCardImageView.setImageResource(R.drawable.better_call_saul);
 
