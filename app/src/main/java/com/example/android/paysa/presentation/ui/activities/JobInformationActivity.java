@@ -20,7 +20,7 @@ public class JobInformationActivity extends AppCompatActivity {
     private Job mJob;
 
     private TextView mJobTitleView, mJobWageView, mJobDescriptionView, mEmployerNameView, mJobLocationView;
-    private ImageView mCardImageView;
+    private ImageView mJobImageView;
     private CollapsingToolbarLayout mCollapsingToolbarLayout;
 
     @Override
@@ -52,8 +52,7 @@ public class JobInformationActivity extends AppCompatActivity {
         mJobWageView = (TextView) findViewById(R.id.tv_job_wage);
         mJobDescriptionView = (TextView) findViewById(R.id.tv_job_description);
 
-        //TODO: Fix CollapsingToolbar
-        mCardImageView = (ImageView) findViewById(R.id.iv_job);
+        mJobImageView = (ImageView) findViewById(R.id.iv_job);
     }
 
     @Override
@@ -84,6 +83,6 @@ public class JobInformationActivity extends AppCompatActivity {
         String description = mJob.getDescription();
         mJobDescriptionView.setText(description);
 
-        mCardImageView.setImageResource(R.drawable.better_call_saul);
+        mJobImageView.setImageResource(R.drawable.better_call_saul);
     }
 }

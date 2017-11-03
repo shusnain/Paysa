@@ -27,8 +27,9 @@
         <activity
             android:name=".presentation.ui.activities.LoginActivity"
             android:label="@string/title_activity_login" />
-        <activity android:name=".presentation.ui.activities.CreateJobActivity"
-            android:label="Create Job"/>
+        <activity
+            android:name=".presentation.ui.activities.CreateJobActivity"
+            android:label="Create Job" />
         <activity android:name=".presentation.ui.activities.SetJobDescriptionActivity" />
 
         <meta-data
@@ -38,8 +39,11 @@
         <activity android:name=".presentation.ui.activities.CreateUserProfileActivity" />
         <activity android:name=".presentation.ui.activities.CardSwipeActivity" />
         <activity android:name=".presentation.ui.activities.HomeActivity" />
-        <activity android:name=".presentation.ui.activities.JobInformationActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".presentation.ui.activities.JobInformationActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".presentation.ui.activities.UserProfileActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

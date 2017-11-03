@@ -80,6 +80,10 @@ public class HomeActivity extends AppCompatActivity{
         } if (id == R.id.logout){
             LoginUtils.logout(this);
             return true;
+        } if(id == R.id.profile){
+            Intent startUserProfileActivity = new Intent(this, UserProfileActivity.class);
+            startActivity(startUserProfileActivity);
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }

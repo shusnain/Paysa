@@ -34,7 +34,17 @@
     <string name="save">Save</string>
     <string name="post">Post</string>
 
-    <!-- Shared Prefernces -->
+    <!-- Strings related to job information activity -->
+    <string name="description">Description</string>
+    <string name="about_the_job">About the job</string>
+
+    <!-- Strings related to user profile -->
+    <string name="action_profile">Profile</string>
+    <string name="about">About</string>
+    <string name="contact_information">Contact Information</string>
+    <string name="seen_only_offered">Seen only by offered jobs</string>
+
+    <!-- Shared Preferences -->
     <string name="saved_is_logged_in">saved_is_logged_in</string>
     <string name="saved_email">saved_email</string>
     <string name="saved_password">saved_password</string>
