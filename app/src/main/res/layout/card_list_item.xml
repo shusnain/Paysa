@@ -53,7 +53,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/title_text"
-                    android:textColor="@color/textColor"
+                    android:textColor="@color/cardTextColor"
                     android:textStyle="bold"
                     android:paddingLeft="@dimen/cardTextSidePadding"
                     android:layout_above="@+id/tv_location"
@@ -67,7 +67,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_marginStart="5dp"
-                    android:textColor="@color/textColor"
+                    android:textColor="@color/cardTextColor"
                     android:layout_alignBaseline="@+id/tv_title_text"
                     android:layout_alignBottom="@+id/tv_title_text"
                     android:layout_toRightOf="@+id/tv_title_text"
@@ -79,7 +79,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/info_text"
-                    android:textColor="@color/textColor"
+                    android:textColor="@color/cardTextColor"
                     android:paddingLeft="@dimen/cardTextSidePadding"
                     android:paddingRight="@dimen/cardTextSidePadding"
                     android:paddingBottom="@dimen/cardTextSidePadding"
@@ -110,7 +110,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/info_text"
-                    android:textColor="@color/textColor"
+                    android:textColor="@color/cardTextColor"
                     android:paddingLeft="@dimen/cardTextSidePadding"
                     android:paddingRight="@dimen/cardTextSidePadding"
                     android:paddingBottom="@dimen/cardTextSidePadding"
@@ -125,7 +125,7 @@
                     <!--android:layout_width="wrap_content"-->
                     <!--android:layout_height="wrap_content"-->
                     <!--android:textSize="@dimen/info_text"-->
-                    <!--android:textColor="@color/textColor"-->
+                    <!--android:textColor="@color/cardTextColor"-->
                     <!--android:paddingLeft="@dimen/cardTextSidePadding"-->
                     <!--android:paddingRight="@dimen/cardTextSidePadding"-->
                     <!--android:text="Frequency"-->
