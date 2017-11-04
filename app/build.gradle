@@ -31,6 +31,6 @@ dependencies {
     compile 'link.fls:swipestack:0.3.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:support-v4:26.+'
-    testCompile 'junit:junit:4.12'
     compile 'de.hdodenhof:circleimageview:2.2.0'
+    testCompile 'junit:junit:4.12'
 }

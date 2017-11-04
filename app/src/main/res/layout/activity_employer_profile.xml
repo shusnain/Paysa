@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:fitsSystemWindows="true"
-    tools:context=".presentation.ui.activities.UserProfileActivity">
+    tools:context=".presentation.ui.activities.EmployerProfileActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar_layout"
@@ -29,7 +29,7 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:id="@+id/iv_job"
+                    android:id="@+id/iv_employer"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/cardImageHeight"
                     android:scaleType="fitXY"
@@ -43,8 +43,7 @@
                     app:civ_border_width="2dp"
                     app:civ_border_color="#FFFFFF"
                     android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true"
-                    android:onClick="startEmployerProfileActivity"/>
+                    android:layout_centerHorizontal="true"/>
 
             </RelativeLayout>
 
@@ -58,7 +57,7 @@
         </android.support.design.widget.CollapsingToolbarLayout>
 
     </android.support.design.widget.AppBarLayout>
-    
+
     <android.support.v4.widget.NestedScrollView
         android:id="@+id/scroll"
         android:layout_width="match_parent"
@@ -83,55 +82,36 @@
                     android:paddingBottom="7dp">
 
                     <TextView
-                        android:id="@+id/about_job"
+                        android:id="@+id/about"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/jobInformationTextSize1"
                         android:layout_marginLeft="@dimen/jobInformationSideMargin"
                         android:layout_marginRight="@dimen/jobInformationSideMargin"
                         android:paddingBottom="@dimen/jobInformationHeaderPadding"
-                        android:text="@string/about_the_job"/>
+                        android:text="@string/about"/>
 
                     <TextView
-                        android:id="@+id/tv_job_title"
+                        android:id="@+id/tv_employer_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/jobInformationTextSize1"
                         android:layout_marginLeft="@dimen/jobInformationSideMargin"
                         android:layout_marginRight="@dimen/jobInformationSideMargin"
-                        android:layout_below="@id/about_job"
+                        android:layout_below="@id/about"
                         android:textStyle="bold"
-                        android:text="Title"/>
-
-                    <TextView
-                        android:id="@+id/tv_job_employer"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/jobInformationSideMargin"
-                        android:layout_marginRight="@dimen/jobInformationSideMargin"
-                        android:textSize="@dimen/jobInformationTextSize1"
-                        android:layout_below="@id/tv_job_title"
                         android:text="Employer"/>
 
                     <TextView
-                        android:id="@+id/tv_job_location"
+                        android:id="@+id/tv_employer_location"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/jobInformationSideMargin"
                         android:layout_marginRight="@dimen/jobInformationSideMargin"
                         android:textSize="@dimen/jobInformationTextSize3"
-                        android:layout_below="@id/tv_job_employer"
+                        android:layout_below="@id/tv_employer_name"
                         android:text="Location"/>
 
-                    <TextView
-                        android:id="@+id/tv_job_wage"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/jobInformationSideMargin"
-                        android:layout_marginRight="@dimen/jobInformationSideMargin"
-                        android:textSize="@dimen/jobInformationTextSize4"
-                        android:layout_below="@id/tv_job_location"
-                        android:text="Wage"/>
 
                 </RelativeLayout>
 
@@ -150,24 +130,32 @@
                     android:paddingBottom="7dp">
 
                     <TextView
-                        android:id="@+id/description"
+                        android:id="@+id/tv_contact_information"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/jobInformationTextSize1"
                         android:layout_marginLeft="@dimen/jobInformationSideMargin"
                         android:layout_marginRight="@dimen/jobInformationSideMargin"
                         android:paddingBottom="@dimen/jobInformationHeaderPadding"
-                        android:text="Description"/>
+                        android:text="@string/contact_information"/>
 
                     <TextView
-                        android:id="@+id/tv_job_description"
+                        android:id="@+id/tv_employer_phone_number"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="@dimen/jobInformationSideMargin"
                         android:layout_marginRight="@dimen/jobInformationSideMargin"
                         android:textSize="@dimen/jobInformationTextSize2"
-                        android:layout_below="@id/tv_job_wage"
-                        android:text="@string/description" />
+                        android:text="@string/phone_number" />
+
+                    <TextView
+                        android:id="@+id/tv_employer_email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/jobInformationSideMargin"
+                        android:layout_marginRight="@dimen/jobInformationSideMargin"
+                        android:textSize="@dimen/jobInformationTextSize2"
+                        android:text="@string/email_address" />
 
                 </LinearLayout>
 

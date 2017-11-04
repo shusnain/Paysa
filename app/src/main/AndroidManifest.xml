@@ -42,8 +42,11 @@
         <activity
             android:name=".presentation.ui.activities.JobInformationActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".presentation.ui.activities.UserProfileActivity"
+        <activity
+            android:name=".presentation.ui.activities.UserProfileActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".presentation.ui.activities.EmployerProfileActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

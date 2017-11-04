@@ -130,7 +130,6 @@ public class JobCardsFragment extends Fragment implements
     private void startJobInformationActivity(Job job){
         Context context = getContext();
         Intent startJobInfromationActivity = new Intent(context, JobInformationActivity.class);
-        Bundle b = new Bundle();
         startJobInfromationActivity.putExtra("job",job);
         startActivity(startJobInfromationActivity);
     }
