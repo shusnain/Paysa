@@ -2,6 +2,7 @@ package com.example.android.paysa.domain.models;
 
 import com.example.android.paysa.domain.utilities.JobUtils;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -12,7 +13,7 @@ import java.util.List;
  * Created by S_Husnain on 2017-09-30.
  */
 
-public class Seeker {
+public class Seeker implements Serializable {
 
    private String mSeekerId;
 

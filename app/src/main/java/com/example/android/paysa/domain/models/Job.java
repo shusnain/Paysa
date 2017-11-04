@@ -121,13 +121,11 @@ public class Job implements Comparable<Job>, Serializable{
     public Employer getEmployer() { return mEmployer; }
 
     public String getLocation(){
-//        return mEmployer.getLocation();
-        return "Toronto, Ont";
+        return mEmployer.getLocation();
     }
 
     public String getEmployerName(){
-        return "Toronto Raptors";
-//        return mEmployer.getName();
+        return mEmployer.getName();
     }
 
     public Seeker getEmployee() { return mEmployee; }

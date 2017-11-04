@@ -15,12 +15,15 @@ import com.example.android.paysa.R;
 import com.example.android.paysa.domain.models.Job;
 import com.example.android.paysa.domain.utilities.JobUtils;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class JobInformationActivity extends AppCompatActivity {
 
     private Job mJob;
 
     private TextView mJobTitleView, mJobWageView, mJobDescriptionView, mEmployerNameView, mJobLocationView;
     private ImageView mJobImageView;
+    private CircleImageView mEmployerLogoImageView;
     private CollapsingToolbarLayout mCollapsingToolbarLayout;
 
     @Override
@@ -53,6 +56,7 @@ public class JobInformationActivity extends AppCompatActivity {
         mJobDescriptionView = (TextView) findViewById(R.id.tv_job_description);
 
         mJobImageView = (ImageView) findViewById(R.id.iv_job);
+        mEmployerLogoImageView = (CircleImageView) findViewById(R.id.iv_employer_logo);
     }
 
     @Override
@@ -84,5 +88,6 @@ public class JobInformationActivity extends AppCompatActivity {
         mJobDescriptionView.setText(description);
 
         mJobImageView.setImageResource(R.drawable.better_call_saul);
+        mEmployerLogoImageView.setImageResource(R.drawable.kitten);
     }
 }
