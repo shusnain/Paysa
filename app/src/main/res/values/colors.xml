@@ -9,4 +9,6 @@
     <!-- Card Tab Colours -->
     <color name="tabTextColorSelected">#FFFFFF</color>
     <color name="tabTextColorUnselected">#bfbfbf</color>
+
+    <color name="link_color">#0000EE</color>
 </resources>

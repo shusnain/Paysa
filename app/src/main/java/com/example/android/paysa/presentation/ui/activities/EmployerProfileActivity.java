@@ -68,6 +68,7 @@ public class EmployerProfileActivity extends AppCompatActivity {
 
         String employerName = mEmployer.getName();
         mEmployerNameView.setText(employerName);
+        mCollapsingToolbarLayout.setTitle(employerName);
 
         String phoneNumber = mEmployer.getPhoneNumber();
         mPhoneNumberView.setText(phoneNumber);

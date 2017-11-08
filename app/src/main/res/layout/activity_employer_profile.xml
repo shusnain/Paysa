@@ -146,7 +146,9 @@
                         android:layout_marginLeft="@dimen/jobInformationSideMargin"
                         android:layout_marginRight="@dimen/jobInformationSideMargin"
                         android:textSize="@dimen/jobInformationTextSize2"
-                        android:text="@string/phone_number" />
+                        android:text="@string/phone_number"
+                        android:autoLink="phone"
+                        android:textColorLink="@color/link_color"/>
 
                     <TextView
                         android:id="@+id/tv_employer_email"
@@ -155,7 +157,9 @@
                         android:layout_marginLeft="@dimen/jobInformationSideMargin"
                         android:layout_marginRight="@dimen/jobInformationSideMargin"
                         android:textSize="@dimen/jobInformationTextSize2"
-                        android:text="@string/email_address" />
+                        android:text="@string/email_address"
+                        android:autoLink="email"
+                        android:textColorLink="@color/link_color" />
 
                 </LinearLayout>
 
