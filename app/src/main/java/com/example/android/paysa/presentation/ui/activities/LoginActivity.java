@@ -305,7 +305,7 @@ public class LoginActivity extends AppCompatActivity implements LoginPresenter.L
     }
 
     public void goHome(){
-        Intent startHomeActivity = new Intent(this, HomeActivity.class);
+        Intent startHomeActivity = new Intent(this, NavigationActivity.class);
         startActivity(startHomeActivity);
     }
 }

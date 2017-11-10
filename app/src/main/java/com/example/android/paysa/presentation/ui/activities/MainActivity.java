@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements MainPresenter.Mai
     private void startup(){
         boolean isLoggedIn = mPresenter.isLoggedIn(this);
         if(isLoggedIn){
-            Intent startHomeActivity = new Intent(this, HomeActivity.class);
+            Intent startHomeActivity = new Intent(this, NavigationActivity.class);
             startActivity(startHomeActivity);
         }else{
             Intent startLoginActivity = new Intent(this, LoginActivity.class);

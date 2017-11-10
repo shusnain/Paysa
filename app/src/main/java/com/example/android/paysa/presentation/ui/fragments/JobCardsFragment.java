@@ -15,8 +15,8 @@ import com.example.android.paysa.R;
 import com.example.android.paysa.domain.executors.impl.ThreadExecutor;
 import com.example.android.paysa.domain.models.Job;
 import com.example.android.paysa.domain.utilities.CardUtil;
-import com.example.android.paysa.presentation.presenters.HomePresenter;
-import com.example.android.paysa.presentation.presenters.impl.HomePresenterImpl;
+import com.example.android.paysa.presentation.presenters.JobCardsPresenter;
+import com.example.android.paysa.presentation.presenters.impl.JobCardsPresenterImpl;
 import com.example.android.paysa.presentation.ui.activities.JobInformationActivity;
 import com.example.android.paysa.presentation.ui.adapters.CardAdapter;
 import com.example.android.paysa.threading.MainThreadImpl;
@@ -28,14 +28,14 @@ import java.util.List;
  */
 
 public class JobCardsFragment extends Fragment implements
-        HomePresenter.HomeView,
+        JobCardsPresenter.HomeView,
         CardAdapter.CardAdapterOnClickHandler{
 
     private RecyclerView mRecyclerView;
 
     private CardAdapter mCardAdapter;
 
-    private HomePresenter mHomePresenter;
+    private JobCardsPresenter mJobCardsPresenter;
 
     private CardUtil.CardType mType;
 
@@ -77,7 +77,7 @@ public class JobCardsFragment extends Fragment implements
 
         mCardAdapter = new CardAdapter(this);
 
-        mHomePresenter = new HomePresenterImpl(
+        mJobCardsPresenter = new JobCardsPresenterImpl(
                 ThreadExecutor.getInstance(),
                 MainThreadImpl.getInstance(),
                 this
@@ -104,7 +104,7 @@ public class JobCardsFragment extends Fragment implements
     @Override
     public void onResume() {
         super.onResume();
-        mHomePresenter.resume();
+        mJobCardsPresenter.resume();
     }
 
     @Override
