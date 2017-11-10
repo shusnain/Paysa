@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import com.example.android.paysa.R;
 import com.example.android.paysa.domain.utilities.CardUtil;
 import com.example.android.paysa.domain.utilities.LoginUtils;
-import com.example.android.paysa.presentation.ui.activities.CardSwipeActivity;
+import com.example.android.paysa.presentation.ui.activities.CardSwipeFragment;
 import com.example.android.paysa.presentation.ui.activities.CreateJobActivity;
 import com.example.android.paysa.presentation.ui.activities.CreateUserProfileActivity;
 import com.example.android.paysa.presentation.ui.activities.LoginActivity;
@@ -26,7 +26,7 @@ public class HomeFragment extends android.support.v4.app.Fragment {
 
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
-    View mView;
+    private View mView;
 
     public HomeFragment(){
 
@@ -71,7 +71,7 @@ public class HomeFragment extends android.support.v4.app.Fragment {
     }
 
     private void setupViewPager(ViewPager viewPager){
-        HomeViewPagerAdapter adapter = new HomeViewPagerAdapter(getActivity().getSupportFragmentManager());
+        HomeViewPagerAdapter adapter = new HomeViewPagerAdapter(getChildFragmentManager());
         adapter.addFragment(JobCardsFragment.newInstance(CardUtil.CardType.SAVED), "Saved");
         adapter.addFragment(JobCardsFragment.newInstance(CardUtil.CardType.APPLIED), "Applied");
         adapter.addFragment(JobCardsFragment.newInstance(CardUtil.CardType.OFFERED), "Offered");
@@ -93,7 +93,7 @@ public class HomeFragment extends android.support.v4.app.Fragment {
             return true;
         }
         if(id == R.id.action_card_swipe){
-            Intent startSwipeStackActivity = new Intent(context, CardSwipeActivity.class);
+            Intent startSwipeStackActivity = new Intent(context, CardSwipeFragment.class);
             startActivity(startSwipeStackActivity);
             return true;
         }

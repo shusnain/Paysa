@@ -15,6 +15,7 @@ import com.example.android.paysa.R;
 import com.example.android.paysa.domain.executors.impl.ThreadExecutor;
 import com.example.android.paysa.domain.models.Job;
 import com.example.android.paysa.domain.utilities.CardUtil;
+import com.example.android.paysa.domain.utilities.JobUtils;
 import com.example.android.paysa.presentation.presenters.JobCardsPresenter;
 import com.example.android.paysa.presentation.presenters.impl.JobCardsPresenterImpl;
 import com.example.android.paysa.presentation.ui.activities.JobInformationActivity;
@@ -37,7 +38,7 @@ public class JobCardsFragment extends Fragment implements
 
     private JobCardsPresenter mJobCardsPresenter;
 
-    private CardUtil.CardType mType;
+    private CardUtil.CardType mType = CardUtil.CardType.APPLIED;
 
     View mView;
 
@@ -64,7 +65,7 @@ public class JobCardsFragment extends Fragment implements
     }
 
     private void init(){
-        mRecyclerView = (RecyclerView) mView.findViewById(R.id.recyclerview_card);
+        mRecyclerView = mView.findViewById(R.id.recyclerview_card);
 
         int recylerViewOrientation = LinearLayoutManager.VERTICAL;
 

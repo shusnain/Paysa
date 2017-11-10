@@ -82,7 +82,8 @@ public class NavigationActivity extends AppCompatActivity
 
         if (id == R.id.home) {
             fragment = new HomeFragment();
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.jobs) {
+            fragment = new CardSwipeFragment();
 
         } else if (id == R.id.nav_slideshow) {
 

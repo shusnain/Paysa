@@ -1,10 +1,16 @@
 package com.example.android.paysa.presentation.ui.activities;
 
+import android.support.v4.app.Fragment;
+import android.content.Context;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.example.android.paysa.R;
 import com.example.android.paysa.domain.executors.impl.ThreadExecutor;
@@ -19,7 +25,7 @@ import java.util.List;
 
 import link.fls.swipestack.SwipeStack;
 
-public class CardSwipeActivity extends AppCompatActivity implements JobCardsPresenter.HomeView {
+public class CardSwipeFragment extends Fragment implements JobCardsPresenter.HomeView {
 
     private SwipeStack mCardStack;
 
@@ -29,15 +35,26 @@ public class CardSwipeActivity extends AppCompatActivity implements JobCardsPres
 
     private CardUtil.CardType mType;
 
+    private View mView;
+
     private int mCurrentPosition;
 
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_card_swipe);
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_card_swipe);
+//
+//        init();
+//    }
 
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+        mView = inflater.inflate(R.layout.activity_card_swipe, container, false);
         init();
+        return mView;
     }
 
     private void init(){
@@ -46,9 +63,9 @@ public class CardSwipeActivity extends AppCompatActivity implements JobCardsPres
 
         mType = CardUtil.CardType.SAVED;
 
-        mCardStack = (SwipeStack) findViewById(R.id.swipe_stack);
+        mCardStack = mView.findViewById(R.id.swipe_stack);
 
-        mCardSwipeAdapter = new CardSwipeAdapter(this);
+        mCardSwipeAdapter = new CardSwipeAdapter(this.getActivity());
 
         mCardStack.setAdapter(mCardSwipeAdapter);
 
@@ -57,6 +74,7 @@ public class CardSwipeActivity extends AppCompatActivity implements JobCardsPres
                 MainThreadImpl.getInstance(),
                 this
         );
+
 
         mCardStack.setListener(new SwipeStack.SwipeStackListener() {
             @Override
@@ -76,21 +94,21 @@ public class CardSwipeActivity extends AppCompatActivity implements JobCardsPres
         });
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if(id == android.R.id.home){
-            onBackPressed();
-        }
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        int id = item.getItemId();
+//        if(id == android.R.id.home){
+//            onBackPressed();
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.card_swipe, menu);
-        return true;
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        MenuInflater inflater = getMenuInflater();
+//        inflater.inflate(R.menu.card_swipe, menu);
+//        return true;
+//    }
 
     @Override
     public void showProgress() {
@@ -108,7 +126,7 @@ public class CardSwipeActivity extends AppCompatActivity implements JobCardsPres
     }
 
     @Override
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
         mMainPresenter.resume();
     }

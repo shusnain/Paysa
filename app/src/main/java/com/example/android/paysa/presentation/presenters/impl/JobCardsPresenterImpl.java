@@ -25,6 +25,7 @@ public class JobCardsPresenterImpl extends AbstractPresenter implements JobCards
                                  HomeView view) {
         super(executor, mainThread);
         mView = view;
+        getCards();
     }
 
     @Override
