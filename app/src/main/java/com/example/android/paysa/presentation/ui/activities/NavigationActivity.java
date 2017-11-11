@@ -19,6 +19,8 @@ import com.example.android.paysa.domain.utilities.LoginUtils;
 import com.example.android.paysa.presentation.ui.fragments.CardSwipeFragment;
 import com.example.android.paysa.presentation.ui.fragments.HomeFragment;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class NavigationActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -39,6 +41,11 @@ public class NavigationActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        View headerView = navigationView.inflateHeaderView(R.layout.nav_header_navigation);
+        CircleImageView userProfileImage = headerView.findViewById(R.id.user_profile_image);
+        userProfileImage.setImageResource(R.drawable.kitten);
+
         loadDefaultFragment();
     }
 
