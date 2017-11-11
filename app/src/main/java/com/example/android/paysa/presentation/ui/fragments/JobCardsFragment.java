@@ -123,7 +123,7 @@ public class JobCardsFragment extends Fragment implements
         if(viewID == R.id.iv_save){
             job.toggleSaved();
             mCardAdapter.notifyDataSetChanged();
-        } else if (viewID == R.id.iv_card){
+        } else if (viewID == R.id.iv_info){
             startJobInformationActivity(job);
         }
     }

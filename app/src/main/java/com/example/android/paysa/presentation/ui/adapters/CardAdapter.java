@@ -93,18 +93,17 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardAdapterVie
     class CardAdapterViewHolder extends RecyclerView.ViewHolder  {
 //        public final TextView mCardTextView;
         public final TextView mJobTitleView, mJobWageView, mEmployerNameView, mJobLocationView;
-        public final ImageView mCardImageView;
-        public final ImageView mCardSaveImageView;
+        public final ImageView mCardImageView, mCardSaveImageView, mCardInfoImageView;
 
         public CardAdapterViewHolder(View itemView){
             super(itemView);
-//            mCardTextView = (TextView) itemView.findViewById(R.id.tv_info_text);
-            mJobTitleView = (TextView) itemView.findViewById(R.id.tv_title_text);
-            mJobWageView = (TextView) itemView.findViewById(R.id.tv_wage);
-            mEmployerNameView = (TextView) itemView.findViewById(R.id.tv_employer_name);
-            mJobLocationView = (TextView) itemView.findViewById(R.id.tv_location);
-            mCardImageView = (ImageView) itemView.findViewById(R.id.iv_card);
-            mCardSaveImageView = (ImageView) itemView.findViewById(R.id.iv_save);
+            mJobTitleView = itemView.findViewById(R.id.tv_title_text);
+            mJobWageView = itemView.findViewById(R.id.tv_wage);
+            mEmployerNameView = itemView.findViewById(R.id.tv_employer_name);
+            mJobLocationView = itemView.findViewById(R.id.tv_location);
+            mCardImageView = itemView.findViewById(R.id.iv_card);
+            mCardSaveImageView = itemView.findViewById(R.id.iv_save);
+            mCardInfoImageView = itemView.findViewById(R.id.iv_info);
 
             mCardSaveImageView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -116,7 +115,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardAdapterVie
                 }
             });
 
-            mCardImageView.setOnClickListener(new View.OnClickListener() {
+            mCardInfoImageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     int adapterPosition = getAdapterPosition();

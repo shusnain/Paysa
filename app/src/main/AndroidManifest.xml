@@ -37,7 +37,7 @@
             android:value="AIzaSyAlQFjs9XlGZxx58PKaEEZt7p4k7wbm2RA" />
 
         <activity android:name=".presentation.ui.activities.CreateUserProfileActivity" />
-        <activity android:name=".presentation.ui.activities.CardSwipeFragment" />
+        <activity android:name=".presentation.ui.fragments.CardSwipeFragment" />
         <!--<activity android:name=".presentation.ui.activities.HomeActivity" />-->
         <activity
             android:name=".presentation.ui.activities.JobInformationActivity"

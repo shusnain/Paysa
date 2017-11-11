@@ -15,6 +15,8 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.android.paysa.R;
+import com.example.android.paysa.domain.utilities.LoginUtils;
+import com.example.android.paysa.presentation.ui.fragments.CardSwipeFragment;
 import com.example.android.paysa.presentation.ui.fragments.HomeFragment;
 
 public class NavigationActivity extends AppCompatActivity
@@ -91,8 +93,8 @@ public class NavigationActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_share) {
 
-        } else if (id == R.id.nav_send) {
-
+        } else if (id == R.id.logout) {
+            LoginUtils.logout(this);
         }
         if(fragment != null){
             FragmentManager fragmentManager = getSupportFragmentManager();

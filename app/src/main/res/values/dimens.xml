@@ -9,6 +9,7 @@
     <dimen name="cardTopMargin">7dp</dimen>
     <dimen name="cardImageHeight">230dp</dimen>
     <dimen name="spacingBetweenCards">15dp</dimen>
+    <dimen name="iconSize">25dp</dimen>
 
     <!-- Create Job Dimensions -->
     <dimen name="sideMargin">30dp</dimen>

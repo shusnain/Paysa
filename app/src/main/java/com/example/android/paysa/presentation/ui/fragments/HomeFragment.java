@@ -7,6 +7,8 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +16,6 @@ import android.view.ViewGroup;
 import com.example.android.paysa.R;
 import com.example.android.paysa.domain.utilities.CardUtil;
 import com.example.android.paysa.domain.utilities.LoginUtils;
-import com.example.android.paysa.presentation.ui.activities.CardSwipeFragment;
 import com.example.android.paysa.presentation.ui.activities.CreateJobActivity;
 import com.example.android.paysa.presentation.ui.activities.CreateUserProfileActivity;
 import com.example.android.paysa.presentation.ui.activities.LoginActivity;
@@ -40,6 +41,13 @@ public class HomeFragment extends android.support.v4.app.Fragment {
 //        init();
 //    }
 
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -54,6 +62,13 @@ public class HomeFragment extends android.support.v4.app.Fragment {
 //        inflater.inflate(R.menu.home, menu);
 //        return true;
 //    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.home, menu);
+    }
+
 
 //    @Override
 //    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
