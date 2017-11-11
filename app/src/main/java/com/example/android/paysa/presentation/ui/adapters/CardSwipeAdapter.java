@@ -25,10 +25,17 @@ import java.util.List;
 public class CardSwipeAdapter extends BaseAdapter {
     private List<Job> mJobData;
     private Activity mActivity;
+    private CardSwipeAdapterClickHandler mClickHandler;
 
-    public CardSwipeAdapter(Activity activity){
+    public interface CardSwipeAdapterClickHandler{
+
+        void onClick(int viewID, Job job);
+    }
+
+    public CardSwipeAdapter(Activity activity, CardSwipeAdapterClickHandler clickHandler){
         mJobData = new ArrayList<>();
         mActivity = activity;
+        mClickHandler = clickHandler;
     }
 
     @Override
@@ -47,23 +54,28 @@ public class CardSwipeAdapter extends BaseAdapter {
     }
 
     private class ViewHolder{
-//        public final TextView mCardTextView;
         public final TextView mJobTitleView, mJobWageView, mEmployerNameView, mJobLocationView;
-        public final ImageView mCardImageView;
+        public final ImageView mCardImageView, mCardInfoImageView;
 
         public ViewHolder(View itemView){
-//            mCardTextView = (TextView) itemView.findViewById(R.id.tv_info_text);
-            mJobTitleView = (TextView) itemView.findViewById(R.id.tv_title_text);
-            mJobWageView = (TextView) itemView.findViewById(R.id.tv_wage);
-//            mJobWageFrequencyView = (TextView) itemView.findViewById(R.id.tv_wage_frequency);
-            mEmployerNameView = (TextView) itemView.findViewById(R.id.tv_employer_name);
-            mJobLocationView = (TextView) itemView.findViewById(R.id.tv_location);
-            mCardImageView = (ImageView) itemView.findViewById(R.id.iv_card);
+            mJobTitleView = itemView.findViewById(R.id.tv_title_text);
+            mJobWageView = itemView.findViewById(R.id.tv_wage);
+            mEmployerNameView = itemView.findViewById(R.id.tv_employer_name);
+            mJobLocationView = itemView.findViewById(R.id.tv_location);
+            mCardImageView = itemView.findViewById(R.id.iv_card);
+            mCardInfoImageView = itemView.findViewById(R.id.iv_info);
+
+            mCardInfoImageView.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
         }
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
 
         LayoutInflater inflater = (LayoutInflater) mActivity.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
@@ -94,6 +106,15 @@ public class CardSwipeAdapter extends BaseAdapter {
 
 
         holder.mCardImageView.setImageResource(R.drawable.better_call_saul);
+
+        holder.mCardInfoImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Job job = mJobData.get(position);
+                int id = view.getId();
+                mClickHandler.onClick(id, job);
+            }
+        });
 
         return convertView;
     }

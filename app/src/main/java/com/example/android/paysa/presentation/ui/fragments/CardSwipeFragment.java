@@ -1,5 +1,6 @@
 package com.example.android.paysa.presentation.ui.fragments;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.content.Context;
 import android.support.annotation.Nullable;
@@ -18,6 +19,7 @@ import com.example.android.paysa.domain.models.Job;
 import com.example.android.paysa.domain.utilities.CardUtil;
 import com.example.android.paysa.presentation.presenters.JobCardsPresenter;
 import com.example.android.paysa.presentation.presenters.impl.JobCardsPresenterImpl;
+import com.example.android.paysa.presentation.ui.activities.JobInformationActivity;
 import com.example.android.paysa.presentation.ui.adapters.CardSwipeAdapter;
 import com.example.android.paysa.threading.MainThreadImpl;
 
@@ -25,7 +27,9 @@ import java.util.List;
 
 import link.fls.swipestack.SwipeStack;
 
-public class CardSwipeFragment extends Fragment implements JobCardsPresenter.HomeView {
+public class CardSwipeFragment extends Fragment implements
+        JobCardsPresenter.HomeView,
+        CardSwipeAdapter.CardSwipeAdapterClickHandler{
 
     private SwipeStack mCardStack;
 
@@ -65,7 +69,7 @@ public class CardSwipeFragment extends Fragment implements JobCardsPresenter.Hom
 
         mCardStack = mView.findViewById(R.id.swipe_stack);
 
-        mCardSwipeAdapter = new CardSwipeAdapter(this.getActivity());
+        mCardSwipeAdapter = new CardSwipeAdapter(this.getActivity(), this);
 
         mCardStack.setAdapter(mCardSwipeAdapter);
 
@@ -139,5 +143,19 @@ public class CardSwipeFragment extends Fragment implements JobCardsPresenter.Hom
     @Override
     public CardUtil.CardType getType() {
         return mType;
+    }
+
+    @Override
+    public void onClick(int viewID, Job job) {
+        if (viewID == R.id.iv_info){
+            startJobInformationActivity(job);
+        }
+    }
+
+    private void startJobInformationActivity(Job job){
+        Context context = getContext();
+        Intent startJobInfromationActivity = new Intent(context, JobInformationActivity.class);
+        startJobInfromationActivity.putExtra("job",job);
+        startActivity(startJobInfromationActivity);
     }
 }

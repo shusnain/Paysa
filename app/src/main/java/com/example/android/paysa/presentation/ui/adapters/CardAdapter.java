@@ -26,19 +26,8 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardAdapterVie
 
     public interface CardAdapterOnClickHandler{
 
-        /**
-         *
-         * @param viewID - ID of the view
-         * @param job
-         */
         void onClick(int viewID, Job job);
     }
-
-    /**
-     * Creates a Job Adapter
-     *
-     * @param clickHandler
-     */
 
     public CardAdapter(CardAdapterOnClickHandler clickHandler){
         mJobData = new ArrayList<>();
