@@ -25,6 +25,7 @@ public class NavigationActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout mDrawerLayout;
+    private NavigationView mNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,10 +40,10 @@ public class NavigationActivity extends AppCompatActivity
         mDrawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+        mNavigationView = (NavigationView) findViewById(R.id.nav_view);
+        mNavigationView.setNavigationItemSelectedListener(this);
 
-        View headerView = navigationView.inflateHeaderView(R.layout.nav_header_navigation);
+        View headerView = mNavigationView.inflateHeaderView(R.layout.nav_header_navigation);
         CircleImageView userProfileImage = headerView.findViewById(R.id.user_profile_image);
         userProfileImage.setImageResource(R.drawable.kitten);
 
@@ -117,6 +118,7 @@ public class NavigationActivity extends AppCompatActivity
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+        mNavigationView.getMenu().getItem(0).setChecked(true);
     }
 
     public void onProfileImageClicked(View view){
